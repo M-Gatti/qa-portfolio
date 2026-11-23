@@ -25,22 +25,30 @@ Todo documento traz um de dois selos:
 ## Conteúdo
 
 ### Templates
-| Documento | Selo | Situação |
-|---|---|---|
-| [Plano de teste](templates/pt-br/plano-de-teste.md) | 📚 Referência de estudo | ✅ Pronto |
-| [Caso de teste](templates/pt-br/caso-de-teste.md) | ✅ Aplicado na prática | ✅ Pronto |
-| [Bug report](templates/pt-br/bug-report.md) | ✅ Aplicado na prática | ✅ Pronto |
-| Charter de teste exploratório | | 🚧 Em breve |
-| Matriz de risco | | 🚧 Em breve |
-| Checklist de release | | 🚧 Em breve |
-| Relatório de dúvidas de PBI | | 🚧 Em breve |
-| Spec com critérios de aceite | | 🚧 Em breve |
+| Documento | Selo |
+|---|---|
+| [Plano de teste](templates/pt-br/plano-de-teste.md) | 📚 Referência de estudo |
+| [Caso de teste](templates/pt-br/caso-de-teste.md) | ✅ Aplicado na prática |
+| [Bug report](templates/pt-br/bug-report.md) | ✅ Aplicado na prática |
+| [Relatório de dúvidas de PBI](templates/pt-br/relatorio-de-duvidas.md) | ✅ Aplicado na prática |
+| [Checklist de release](templates/pt-br/checklist-de-release.md) | ✅ Aplicado na prática |
+| [Spec com critérios de aceite](templates/pt-br/spec-com-criterios-de-aceite.md) | ✅ Aplicado na prática (projetos próprios) |
+| [Charter de teste exploratório](templates/pt-br/charter-exploratorio.md) | 📚 Referência de estudo |
+| [Matriz de risco](templates/pt-br/matriz-de-risco.md) | 📚 Referência de estudo |
+| [Massa de teste e privacidade (LGPD)](templates/pt-br/massa-de-teste-e-privacidade.md) | 📚 Referência de estudo |
 
 ### Técnicas de design de teste (CTFL v4.0, capítulo 4)
 [Todas as técnicas num guia só](techniques/pt-br/tecnicas-de-design-de-teste.md): partição de equivalência, análise de valor limite, tabela de decisão, transição de estado, suposição de erro (*error guessing*) e teste exploratório, cada uma com exemplo resolvido.
 
-### Fluxos, estudo de caso e site
-🚧 Em breve: fluxo de QA de uma PBI, Fail × Blocked, triagem de bug, um estudo de caso fictício sobre reorganizar um repositório de casos de teste e um fluxo de QA com IA e aprovação humana, e uma página web deste portfólio.
+### Fluxos
+| Documento | Selo |
+|---|---|
+| [Fluxo de QA de uma história](flows/pt-br/fluxo-de-qa-da-historia.md) | ✅ Aplicado na prática |
+| [Fail × Blocked](flows/pt-br/fail-vs-blocked.md) | ✅ Aplicado na prática |
+| [Triagem de bug](flows/pt-br/triagem-de-bug.md) | ✅ Parte do QA · 📚 formato da reunião |
+
+### Em breve
+🚧 Um estudo de caso fictício sobre reorganizar um repositório de casos de teste e um fluxo de QA com IA e aprovação humana, e uma página web deste portfólio.
 
 ---
 

@@ -25,22 +25,30 @@ Every document carries one of two labels:
 ## Contents
 
 ### Templates
-| Document | Label | Status |
-|---|---|---|
-| [Test plan](templates/en/test-plan.md) | 📚 Study reference | ✅ Ready |
-| [Test case](templates/en/test-case.md) | ✅ Applied in practice | ✅ Ready |
-| [Bug report](templates/en/bug-report.md) | ✅ Applied in practice | ✅ Ready |
-| Exploratory test charter | | 🚧 Coming |
-| Risk matrix | | 🚧 Coming |
-| Release checklist | | 🚧 Coming |
-| Story clarification report (questions on a user story) | | 🚧 Coming |
-| Spec with acceptance criteria | | 🚧 Coming |
+| Document | Label |
+|---|---|
+| [Test plan](templates/en/test-plan.md) | 📚 Study reference |
+| [Test case](templates/en/test-case.md) | ✅ Applied in practice |
+| [Bug report](templates/en/bug-report.md) | ✅ Applied in practice |
+| [Story clarification report](templates/en/story-clarification-report.md) (questions on a user story) | ✅ Applied in practice |
+| [Release checklist](templates/en/release-checklist.md) | ✅ Applied in practice |
+| [Spec with acceptance criteria](templates/en/spec-acceptance-criteria.md) | ✅ Applied in practice (own projects) |
+| [Exploratory test charter](templates/en/exploratory-charter.md) | 📚 Study reference |
+| [Risk matrix](templates/en/risk-matrix.md) | 📚 Study reference |
+| [Test data and privacy checklist (LGPD)](templates/en/test-data-privacy-checklist.md) | 📚 Study reference |
 
 ### Test design techniques (CTFL v4.0, chapter 4)
 [All techniques in one guide](techniques/en/test-design-techniques.md): equivalence partitioning, boundary value analysis, decision tables, state transition testing, error guessing and exploratory testing, each with a solved example.
 
-### Flows, case study and site
-🚧 Coming: QA flow for a user story, Fail vs Blocked, bug triage, a fictional case study on reorganizing a test case repository and an AI-assisted QA workflow with human approval, and a web page for this portfolio.
+### Flows
+| Document | Label |
+|---|---|
+| [QA flow for a user story](flows/en/qa-flow-user-story.md) | ✅ Applied in practice |
+| [Fail vs Blocked](flows/en/fail-vs-blocked.md) | ✅ Applied in practice |
+| [Bug triage](flows/en/bug-triage.md) | ✅ QA side · 📚 meeting format |
+
+### Coming next
+🚧 A fictional case study on reorganizing a test case repository and an AI-assisted QA workflow with human approval, and a web page for this portfolio.
 
 ---
 
