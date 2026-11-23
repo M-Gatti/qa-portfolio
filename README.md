@@ -36,6 +36,8 @@ Every document carries one of two labels:
 | [Exploratory test charter](templates/en/exploratory-charter.md) | 📚 Study reference |
 | [Risk matrix](templates/en/risk-matrix.md) | 📚 Study reference |
 | [Test data and privacy checklist (LGPD)](templates/en/test-data-privacy-checklist.md) | 📚 Study reference |
+| [Traceability matrix](templates/en/traceability-matrix.md) | 📚 Study reference |
+| [Test summary report](templates/en/test-summary-report.md) | 📚 Study reference |
 
 ### Test design techniques (CTFL v4.0, chapter 4)
 [All techniques in one guide](techniques/en/test-design-techniques.md): equivalence partitioning, boundary value analysis, decision tables, state transition testing, error guessing and exploratory testing, each with a solved example.
@@ -47,8 +49,12 @@ Every document carries one of two labels:
 | [Fail vs Blocked](flows/en/fail-vs-blocked.md) | ✅ Applied in practice |
 | [Bug triage](flows/en/bug-triage.md) | ✅ QA side · 📚 meeting format |
 
+### Case study
+[From one test plan per sprint to a test repository by journey, with an AI-assisted workflow](case-study/en/test-repository-and-ai-workflow.md) · ✅ Applied in practice
+Fictional scenario, real techniques and decisions.
+
 ### Coming next
-🚧 A fictional case study on reorganizing a test case repository and an AI-assisted QA workflow with human approval, and a web page for this portfolio.
+🚧 Hands-on testing of a public demo app (manual tests, AI-assisted execution with evidence, Playwright automation in CI) and a web page for this portfolio.
 
 ---
 

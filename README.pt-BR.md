@@ -36,6 +36,8 @@ Todo documento traz um de dois selos:
 | [Charter de teste exploratório](templates/pt-br/charter-exploratorio.md) | 📚 Referência de estudo |
 | [Matriz de risco](templates/pt-br/matriz-de-risco.md) | 📚 Referência de estudo |
 | [Massa de teste e privacidade (LGPD)](templates/pt-br/massa-de-teste-e-privacidade.md) | 📚 Referência de estudo |
+| [Matriz de rastreabilidade](templates/pt-br/matriz-de-rastreabilidade.md) | 📚 Referência de estudo |
+| [Relatório de resumo de teste](templates/pt-br/relatorio-de-resumo-de-teste.md) | 📚 Referência de estudo |
 
 ### Técnicas de design de teste (CTFL v4.0, capítulo 4)
 [Todas as técnicas num guia só](techniques/pt-br/tecnicas-de-design-de-teste.md): partição de equivalência, análise de valor limite, tabela de decisão, transição de estado, suposição de erro (*error guessing*) e teste exploratório, cada uma com exemplo resolvido.
@@ -47,8 +49,12 @@ Todo documento traz um de dois selos:
 | [Fail × Blocked](flows/pt-br/fail-vs-blocked.md) | ✅ Aplicado na prática |
 | [Triagem de bug](flows/pt-br/triagem-de-bug.md) | ✅ Parte do QA · 📚 formato da reunião |
 
+### Estudo de caso
+[De um plano de teste por sprint para um repositório de casos por jornada, com um fluxo assistido por IA](case-study/pt-br/repositorio-de-casos-e-fluxo-com-ia.md) · ✅ Aplicado na prática
+Cenário fictício, técnicas e decisões reais.
+
 ### Em breve
-🚧 Um estudo de caso fictício sobre reorganizar um repositório de casos de teste e um fluxo de QA com IA e aprovação humana, e uma página web deste portfólio.
+🚧 Teste prático de um app público de demonstração (testes manuais, execução assistida por IA com evidências, automação com Playwright em CI) e uma página web deste portfólio.
 
 ---
 
