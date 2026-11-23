@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcus Gatti QA Portfolio</title>
+<meta name="description" content="QA Engineer (web and mobile). Templates, test design techniques and QA flows, with fictional examples.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a professional portfolio read by recruiters and QA leads, calm and exact
+   IDEA a test run sheet: every document is a row with a status label, like a run in a test management tool
+   PICTURE the coverage bar (applied vs study, derived from the item list) above the full run sheet
+   COLOUR white / near-black ground, black ink, concrete #d8d8d4 panels, safety yellow only for "applied in practice"
+   TYPE Hanken Grotesk 600 for titles, Hanken Grotesk 400/500 for text
+   LAYOUT laptop: name and intro left, coverage panel right; run sheet in three columns below. Phone: stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#1a1a19);--ink:light-dark(#111111,#ecece9);--mute:light-dark(#55554f,#a9a9a3);--panel:light-dark(#d8d8d4,#2a2a28);--soft:light-dark(#f1f1ee,#222220);--line:light-dark(#c4c4bf,#3a3a37);--yel:#ffe600;--yink:#111111}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:inherit;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding:clamp(28px,4vw,64px) max(5vw,16px)}
+[data-lang=en] .pt,[data-lang=pt] .en{display:none}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:10px max(5vw,16px)}
+header .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-weight:700;text-decoration:none;margin-right:auto}
+nav{display:flex;gap:4px 18px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--mute);font-weight:500}
+nav a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--ink);border-radius:6px;overflow:hidden}
+.lang button{font:inherit;font-weight:600;border:0;background:none;color:var(--ink);padding:0 12px;min-height:44px;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:stretch}
+h1{font-size:clamp(40px,6vw,64px);line-height:1.05;letter-spacing:-.02em;margin:0 0 6px;font-weight:600;text-wrap:balance}
+.role{font-size:clamp(20px,2.2vw,24px);font-weight:500;margin:0 0 18px}
+.lead{font-size:17px;max-width:60ch;margin:0 0 16px}
+.note{font-size:14px;color:var(--mute);max-width:62ch;margin:0}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;white-space:nowrap}
+.chip i{width:14px;height:14px;border-radius:3px;flex:none}
+.ap i{background:var(--yel);border:1px solid var(--yink)}
+.st i{background:repeating-linear-gradient(45deg,var(--mute) 0 2px,transparent 2px 5px);border:1px solid var(--mute)}
+.mx i{background:linear-gradient(90deg,var(--yel) 50%,var(--panel) 50%);border:1px solid var(--yink)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;margin:20px 0}
+.cov{background:var(--panel);border-radius:10px;padding:clamp(18px,2.4vw,28px);display:flex;flex-direction:column;gap:16px}
+.cov h2{margin:0;font-size:20px;line-height:1.2;font-weight:600}
+.big{font-size:clamp(48px,7vw,76px);font-weight:600;line-height:1;letter-spacing:-.02em}
+.bar{display:flex;height:44px;border-radius:6px;overflow:hidden;border:1px solid var(--ink);background:var(--bg)}
+.bar span{display:block;height:100%}
+.bar .ap{background:var(--yel)}
+.bar .st{background:repeating-linear-gradient(45deg,var(--mute) 0 2px,transparent 2px 6px)}
+.bar .mx{background:linear-gradient(90deg,var(--yel) 50%,transparent 50%) 0 0/8px 100%}
+.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9em,1fr));gap:10px}
+.counts div{background:var(--bg);border-radius:8px;padding:10px 12px}
+.counts b{display:block;font-size:28px;line-height:1.1}
+.counts small{font-size:14px;color:var(--mute)}
+.covfoot{font-size:14px;margin:auto 0 0}
+h2.sec{font-size:clamp(30px,3.6vw,40px);line-height:1.05;letter-spacing:-.02em;margin:0 0 8px;font-weight:600}
+.sub{color:var(--mute);margin:0 0 24px;max-width:70ch}
+.run{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.group{border-top:3px solid var(--ink);padding-top:10px}
+.group h3{font-size:20px;margin:0 0 6px;font-weight:600;display:flex;justify-content:space-between;gap:8px}
+.group h3 small{font-size:14px;color:var(--mute);font-weight:500}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);text-decoration:none}
+.row:hover .t{text-decoration:underline}
+.row .t{font-weight:600}
+.row .d{grid-column:1/-1;font-size:14px;color:var(--mute)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{background:var(--soft);border-radius:10px;padding:20px 22px}
+.card h3{margin:0 0 10px;font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+.card ul{margin:0;padding-left:20px}
+.card li{margin:6px 0}
+.case{background:var(--ink);color:var(--bg);border-radius:10px;padding:clamp(20px,3vw,36px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
+.case h3{margin:0 0 8px;font-size:24px;line-height:1.15;font-weight:600}
+.case p{margin:0;max-width:68ch}
+.soon{border:1px solid currentColor;border-radius:999px;padding:6px 14px;font-weight:600;white-space:nowrap;font-size:14px}
+.proj{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.proj a{display:block;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.proj a:hover{border-color:var(--ink)}
+.proj b{font-size:18px}
+.proj p{margin:6px 0 10px;color:var(--mute)}
+footer{background:var(--panel)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px}
+footer h2{margin:0 0 8px;font-size:28px;font-weight:600;letter-spacing:-.02em}
+footer p{margin:4px 0}
+.small{font-size:14px;color:var(--mute)}
+@media(max-width:900px){.run{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:760px){.hero,.two,.proj,footer .wrap{grid-template-columns:minmax(0,1fr)}.case{grid-template-columns:minmax(0,1fr)}nav{display:none}}
+@media(prefers-reduced-motion:no-preference){.bar span{transition:flex-basis .6s ease}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#top">Marcus Gatti</a>
+  <nav aria-label="Sections">
+    <a href="#portfolio"><span class="en">Portfolio</span><span class="pt">Portfólio</span></a>
+    <a href="#skills"><span class="en">Practice and study</span><span class="pt">Prática e estudo</span></a>
+    <a href="#projects"><span class="en">Projects</span><span class="pt">Projetos</span></a>
+    <a href="#contact"><span class="en">Contact</span><span class="pt">Contato</span></a>
+  </nav>
+  <div class="lang" role="group" aria-label="Language">
+    <button id="b-en" type="button" data-set="en" aria-pressed="true">EN</button>
+    <button id="b-pt" type="button" data-set="pt" aria-pressed="false">PT</button>
+  </div>
+</div></header>
+
+<main id="top">
+<section class="band"><div class="wrap hero">
+  <div>
+    <h1>Marcus Gatti</h1>
+    <p class="role"><span class="en">QA Engineer · web and mobile</span><span class="pt">QA Engineer · web e mobile</span></p>
+    <p class="lead en">About 2.5 years in QA, testing web, Android and iOS apps in Agile teams, remotely from Belo Horizonte, Brazil. This portfolio collects the templates, test design techniques and flows I use, organized along the ISTQB CTFL v4.0 syllabus.</p>
+    <p class="lead pt">Cerca de 2,5 anos em QA, testando apps web, Android e iOS em times ágeis, remoto de Belo Horizonte (MG). Este portfólio reúne os templates, as técnicas de design de teste e os fluxos que uso, organizados pelo syllabus ISTQB CTFL v4.0.</p>
+    <div class="legend">
+      <span class="chip ap"><i></i><span class="en">Applied in practice</span><span class="pt">Aplicado na prática</span></span>
+      <span class="chip st"><i></i><span class="en">Study reference</span><span class="pt">Referência de estudo</span></span>
+    </div>
+    <p class="note en">All examples are fictional and use <em>TrilhaFit</em>, an invented gym class booking app. The techniques and decisions labeled "applied" are the ones I really use. I am preparing for the CTFL v4.0 exam (planned for 2027); the syllabus is a reference here, not a certification.</p>
+    <p class="note pt">Todos os exemplos são fictícios e usam o <em>TrilhaFit</em>, um app inventado de reserva de aulas de academia. As técnicas e decisões com o selo "aplicado" são as que uso de verdade. Estou me preparando para a prova da CTFL v4.0 (prevista para 2027); o syllabus é referência aqui, não certificação.</p>
+  </div>
+  <aside class="cov" aria-labelledby="cov-h">
+    <h2 id="cov-h"><span class="en">What is in this portfolio</span><span class="pt">O que tem neste portfólio</span></h2>
+    <div><span class="big" id="n-total">18</span> <span class="en">items</span><span class="pt">itens</span></div>
+    <div class="bar" id="bar" aria-hidden="true"></div>
+    <div class="counts" id="counts"></div>
+    <p class="covfoot"><span class="en">Every item says how I know it. Nothing labeled "applied" without real project use behind it.</span><span class="pt">Cada item diz de onde vem. Nada leva "aplicado" sem uso real em projeto por trás.</span></p>
+  </aside>
+</div></section>
+
+<section class="band" id="portfolio" style="padding-top:0"><div class="wrap">
+  <h2 class="sec"><span class="en">The run sheet</span><span class="pt">A lista completa</span></h2>
+  <p class="sub"><span class="en">Each document opens on GitHub, in the language you picked above.</span><span class="pt">Cada documento abre no GitHub, no idioma escolhido lá em cima.</span></p>
+  <div class="run" id="run"></div>
+</div></section>
+
+<section class="band" id="skills" style="background:var(--soft)"><div class="wrap">
+  <h2 class="sec"><span class="en">Practice and study, kept apart</span><span class="pt">Prática e estudo, sem misturar</span></h2>
+  <p class="sub"><span class="en">What I do at work today, and what I am learning next.</span><span class="pt">O que faço no trabalho hoje, e o que estou aprendendo.</span></p>
+  <div class="two">
+    <div class="card" style="background:var(--bg)">
+      <h3><span class="chip ap"><i></i></span><span class="en">In practice</span><span class="pt">Na prática</span></h3>
+      <ul class="en">
+        <li>Functional, exploratory, regression, smoke and sanity testing on web, Android and iOS (real devices and BrowserStack)</li>
+        <li>Test design: equivalence partitioning, boundary values, decision tables</li>
+        <li>API testing with Postman; BDD and Gherkin</li>
+        <li>Azure DevOps (Boards, Test Plans, Wiki) and Jira; organizing a test case repository by user journey</li>
+        <li>Release coordination with the team, UAT, screen checks against Figma and Zeplin</li>
+        <li>AI in the QA workflow: drafting test cases from test recordings, with lint, dry-run and human approval before anything is published</li>
+        <li>Basic SQL and Python, Git and GitHub, DevTools</li>
+      </ul>
+      <ul class="pt">
+        <li>Teste funcional, exploratório, regressão, smoke e sanity em web, Android e iOS (aparelhos reais e BrowserStack)</li>
+        <li>Design de teste: partição de equivalência, valor limite, tabela de decisão</li>
+        <li>Teste de API com Postman; BDD e Gherkin</li>
+        <li>Azure DevOps (Boards, Test Plans, Wiki) e Jira; organização de repositório de casos por jornada</li>
+        <li>Coordenação de release com o time, UAT, validação de telas no Figma e no Zeplin</li>
+        <li>IA no fluxo de QA: rascunho de casos de teste a partir das gravações dos testes, com lint, dry-run e aprovação humana antes de publicar</li>
+        <li>SQL e Python básicos, Git e GitHub, DevTools</li>
+      </ul>
+    </div>
+    <div class="card" style="background:var(--bg)">
+      <h3><span class="chip st"><i></i></span><span class="en">Studying</span><span class="pt">Estudando</span></h3>
+      <ul class="en">
+        <li><b>Playwright</b>: my main focus for test automation</li>
+        <li><b>ISTQB CTFL v4.0</b>: exam planned for 2027, then the CTFL-AI extension</li>
+        <li><b>Cypress</b>: secondary study (see the Desafio-dti project)</li>
+        <li><b>Jest and Testing Library</b></li>
+        <li><b>Data protection (LGPD)</b> applied to test data and privacy testing</li>
+      </ul>
+      <ul class="pt">
+        <li><b>Playwright</b>: meu foco principal em automação de testes</li>
+        <li><b>ISTQB CTFL v4.0</b>: prova prevista para 2027, depois a extensão CTFL-AI</li>
+        <li><b>Cypress</b>: estudo secundário (veja o projeto Desafio-dti)</li>
+        <li><b>Jest e Testing Library</b></li>
+        <li><b>Proteção de dados (LGPD)</b> aplicada à massa de teste e a testes de privacidade</li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <div class="case">
+    <div>
+      <h3><span class="en">Case study: reorganizing a test case repository, with an AI-assisted workflow</span><span class="pt">Estudo de caso: reorganizando um repositório de casos de teste, com um fluxo assistido por IA</span></h3>
+      <p class="en">A fictional product and team, real techniques and decisions: moving from one test plan per sprint to suites by user journey, and generating test case drafts with AI under human approval.</p>
+      <p class="pt">Produto e time fictícios, técnicas e decisões reais: sair de um plano de teste por sprint para suítes por jornada, e gerar rascunhos de casos com IA sob aprovação humana.</p>
+    </div>
+    <span class="soon"><span class="en">Coming soon</span><span class="pt">Em breve</span></span>
+  </div>
+</div></section>
+
+<section class="band" id="projects" style="padding-top:0"><div class="wrap">
+  <h2 class="sec"><span class="en">Projects</span><span class="pt">Projetos</span></h2>
+  <p class="sub"><span class="en">Public repositories of mine.</span><span class="pt">Repositórios públicos meus.</span></p>
+  <div class="proj">
+    <a href="https://github.com/M-Gatti/Desafio-dti"><b>Desafio-dti</b>
+      <p class="en">Study project: authentication and sign-up flows automated with Cypress and BDD.</p>
+      <p class="pt">Projeto de estudo: fluxos de autenticação e cadastro automatizados com Cypress e BDD.</p>
+      <span class="chip st"><i></i><span class="en">Study reference</span><span class="pt">Referência de estudo</span></span></a>
+    <a href="https://github.com/M-Gatti/teleprompter"><b>teleprompter</b>
+      <p class="en">A small PWA I built for my own use, published on GitHub Pages.</p>
+      <p class="pt">Um PWA pequeno que fiz para uso próprio, publicado no GitHub Pages.</p>
+      <span class="chip"><span class="en">Personal project</span><span class="pt">Projeto pessoal</span></span></a>
+  </div>
+</div></section>
+</main>
+
+<footer class="band" id="contact"><div class="wrap">
+  <div>
+    <h2><span class="en">Let's talk</span><span class="pt">Vamos conversar</span></h2>
+    <p><span class="en">Open to remote QA work: contract (PJ), part-time or freelance.</span><span class="pt">Aberto a trabalho remoto de QA: PJ, meio período ou freelance.</span></p>
+    <p><a href="https://linkedin.com/in/gattisj">linkedin.com/in/gattisj</a></p>
+    <p>gattimarcussj@gmail.com</p>
+    <p><a href="https://github.com/M-Gatti">github.com/M-Gatti</a></p>
+  </div>
+  <div>
+    <p><b><span class="en">Languages</span><span class="pt">Idiomas</span></b></p>
+    <p class="en">Portuguese (native), English (advanced), Spanish (intermediate)</p>
+    <p class="pt">Português (nativo), inglês (avançado), espanhol (intermediário)</p>
+    <p class="small" style="margin-top:16px"><span class="en">This site has no forms, cookies or analytics. Content under CC BY 4.0.</span><span class="pt">Este site não tem formulário, cookie nem analytics. Conteúdo sob CC BY 4.0.</span></p>
+  </div>
+</div></footer>
+
+<script>
+{
+const REPO='https://github.com/M-Gatti/qa-portfolio/blob/main/';
+const L={en:{ap:'Applied',st:'Study',mx:'Mixed',apL:'applied in practice',stL:'study reference',mxL:'mixed',open:'Open'},pt:{ap:'Aplicado',st:'Estudo',mx:'Misto',apL:'aplicados na prática',stL:'referência de estudo',mxL:'misto',open:'Abrir'}};
+const T=(en,pt)=>({en,pt});
+const groups=[
+ {id:'tpl',name:T('Templates','Templates'),items:[
+  {s:'st',n:T('Test plan','Plano de teste'),d:T('Based on CTFL 5.1.1 and ISO/IEC/IEEE 29119-3','Baseado no CTFL 5.1.1 e na ISO/IEC/IEEE 29119-3'),p:T('templates/en/test-plan.md','templates/pt-br/plano-de-teste.md')},
+  {s:'ap',n:T('Test case','Caso de teste'),d:T('Fields, writing rules and a solved example','Campos, regras de escrita e exemplo resolvido'),p:T('templates/en/test-case.md','templates/pt-br/caso-de-teste.md')},
+  {s:'ap',n:T('Bug report','Bug report'),d:T('Severity vs priority, with a full example','Severidade × prioridade, com exemplo completo'),p:T('templates/en/bug-report.md','templates/pt-br/bug-report.md')},
+  {s:'ap',n:T('Story clarification report','Relatório de dúvidas de PBI'),d:T('Questions on a story, grouped by rule','Dúvidas sobre a história, agrupadas por regra'),p:T('templates/en/story-clarification-report.md','templates/pt-br/relatorio-de-duvidas.md')},
+  {s:'ap',n:T('Release checklist','Checklist de release'),d:T('Before, go/no-go and after','Antes, go/no-go e depois'),p:T('templates/en/release-checklist.md','templates/pt-br/checklist-de-release.md')},
+  {s:'ap',n:T('Spec with acceptance criteria','Spec com critérios de aceite'),d:T('Used in my own projects','Usado nos meus projetos próprios'),p:T('templates/en/spec-acceptance-criteria.md','templates/pt-br/spec-com-criterios-de-aceite.md')},
+  {s:'st',n:T('Exploratory test charter','Charter exploratório'),d:T('Session-based format: charter, timebox, debrief','Formato por sessão: charter, tempo, debriefing'),p:T('templates/en/exploratory-charter.md','templates/pt-br/charter-exploratorio.md')},
+  {s:'st',n:T('Risk matrix','Matriz de risco'),d:T('Likelihood × impact driving test depth','Probabilidade × impacto definindo a profundidade'),p:T('templates/en/risk-matrix.md','templates/pt-br/matriz-de-risco.md')},
+  {s:'st',n:T('Test data and privacy (LGPD)','Massa de teste e privacidade (LGPD)'),d:T('Handling data while testing, and what to test','Como tratar dados ao testar, e o que testar'),p:T('templates/en/test-data-privacy-checklist.md','templates/pt-br/massa-de-teste-e-privacidade.md')}]},
+ {id:'tec',name:T('Test design techniques','Técnicas de design de teste'),items:[
+  {s:'ap',n:T('Equivalence partitioning','Partição de equivalência'),d:T('CTFL 4.2.1','CTFL 4.2.1'),a:T('1-equivalence-partitioning','1-partição-de-equivalência')},
+  {s:'ap',n:T('Boundary value analysis','Análise de valor limite'),d:T('CTFL 4.2.2, 2-value and 3-value','CTFL 4.2.2, 2 e 3 valores'),a:T('2-boundary-value-analysis','2-análise-de-valor-limite')},
+  {s:'ap',n:T('Decision table testing','Tabela de decisão'),d:T('CTFL 4.2.3','CTFL 4.2.3'),a:T('3-decision-table-testing','3-tabela-de-decisão')},
+  {s:'st',n:T('State transition testing','Transição de estado'),d:T('CTFL 4.2.4','CTFL 4.2.4'),a:T('4-state-transition-testing','4-transição-de-estado')},
+  {s:'st',n:T('Error guessing','Suposição de erro'),d:T('CTFL 4.4.1, fault attacks','CTFL 4.4.1, ataques de falha'),a:T('5-error-guessing','5-suposição-de-erro-error-guessing')},
+  {s:'ap',n:T('Exploratory testing','Teste exploratório'),d:T('CTFL 4.4.2','CTFL 4.4.2'),a:T('6-exploratory-testing','6-teste-exploratório')}]},
+ {id:'flw',name:T('QA flows','Fluxos de QA'),items:[
+  {s:'ap',n:T('QA flow for a user story','Fluxo de QA de uma história'),d:T('From refinement to Done','Do refinamento ao Done'),p:T('flows/en/qa-flow-user-story.md','flows/pt-br/fluxo-de-qa-da-historia.md')},
+  {s:'ap',n:T('Fail vs Blocked','Fail × Blocked'),d:T('Decision criteria with examples','Critérios de decisão com exemplos'),p:T('flows/en/fail-vs-blocked.md','flows/pt-br/fail-vs-blocked.md')},
+  {s:'mx',n:T('Bug triage','Triagem de bug'),d:T('QA side in practice; meeting format from study','Parte do QA na prática; reunião vinda do estudo'),p:T('flows/en/bug-triage.md','flows/pt-br/triagem-de-bug.md')}]}
+];
+const TECH=T('techniques/en/test-design-techniques.md','techniques/pt-br/tecnicas-de-design-de-teste.md');
+const all=groups.flatMap(g=>g.items);
+const n={ap:0,st:0,mx:0};all.forEach(i=>n[i.s]++);
+const run=document.getElementById('run'),bar=document.getElementById('bar'),counts=document.getElementById('counts');
+document.getElementById('n-total').textContent=all.length;
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const render=lang=>{
+  const t=L[lang];
+  run.innerHTML=groups.map(g=>`<div class="group"><h3>${esc(g.name[lang])}<small>${g.items.length}</small></h3>${g.items.map(i=>{
+    const href=REPO+(i.p?i.p[lang]:TECH[lang]+'#'+encodeURIComponent(i.a[lang]));
+    return `<a class="row" href="${href}"><span class="t">${esc(i.n[lang])}</span><span class="chip ${i.s}"><i></i>${t[i.s]}</span><span class="d">${esc(i.d[lang])}</span></a>`}).join('')}</div>`).join('');
+  bar.innerHTML=['ap','mx','st'].filter(k=>n[k]).map(k=>`<span class="${k}" style="flex:0 0 ${(n[k]/all.length*100).toFixed(2)}%"></span>`).join('');
+  counts.innerHTML=['ap','st','mx'].filter(k=>n[k]).map(k=>`<div><b>${n[k]}</b><small class="chip ${k}"><i></i>${t[k+'L']}</small></div>`).join('');
+};
+const setLang=lang=>{
+  document.documentElement.dataset.lang=lang;
+  document.documentElement.lang=lang==='pt'?'pt-BR':'en';
+  document.getElementById('b-en').setAttribute('aria-pressed',lang==='en');
+  document.getElementById('b-pt').setAttribute('aria-pressed',lang==='pt');
+  render(lang);
+  try{localStorage.setItem('qa-lang',lang)}catch(e){}
+};
+let start='en';
+try{start=localStorage.getItem('qa-lang')||((navigator.language||'').toLowerCase().startsWith('pt')?'pt':'en')}catch(e){start=(navigator.language||'').toLowerCase().startsWith('pt')?'pt':'en'}
+if(location.hash==='#pt'||location.hash==='#en')start=location.hash.slice(1);
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.set)));
+setLang(start);
+}
+</script>
+</body>
+</html>
