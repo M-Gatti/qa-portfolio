@@ -30,6 +30,9 @@ Todo documento traz um de dois selos:
 | [Plano de teste](templates/pt-br/plano-de-teste.md) | 📚 Referência de estudo |
 | [Caso de teste](templates/pt-br/caso-de-teste.md) | ✅ Aplicado na prática |
 | [Bug report](templates/pt-br/bug-report.md) | ✅ Aplicado na prática |
+| [História de usuário (PBI)](templates/pt-br/historia-de-usuario.md) | ✅ Checklist de revisão · 📚 formato de escrita |
+| [Melhoria](templates/pt-br/melhoria.md) | 📚 Referência de estudo |
+| [Task de QA](templates/pt-br/task.md) | ✅ Aplicado na prática |
 | [Relatório de dúvidas de PBI](templates/pt-br/relatorio-de-duvidas.md) | ✅ Aplicado na prática |
 | [Checklist de release](templates/pt-br/checklist-de-release.md) | ✅ Aplicado na prática |
 | [Spec com critérios de aceite](templates/pt-br/spec-com-criterios-de-aceite.md) | ✅ Aplicado na prática (projetos próprios) |

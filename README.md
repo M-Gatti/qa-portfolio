@@ -30,6 +30,9 @@ Every document carries one of two labels:
 | [Test plan](templates/en/test-plan.md) | 📚 Study reference |
 | [Test case](templates/en/test-case.md) | ✅ Applied in practice |
 | [Bug report](templates/en/bug-report.md) | ✅ Applied in practice |
+| [User story (PBI)](templates/en/user-story.md) | ✅ Review checklist · 📚 writing format |
+| [Improvement](templates/en/improvement.md) | 📚 Study reference |
+| [QA task](templates/en/task.md) | ✅ Applied in practice |
 | [Story clarification report](templates/en/story-clarification-report.md) (questions on a user story) | ✅ Applied in practice |
 | [Release checklist](templates/en/release-checklist.md) | ✅ Applied in practice |
 | [Spec with acceptance criteria](templates/en/spec-acceptance-criteria.md) | ✅ Applied in practice (own projects) |

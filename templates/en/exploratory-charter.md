@@ -34,8 +34,8 @@
 | Timebox | 60 min |
 | Build / env | 2.3.0 (412), staging, Android 14 and web |
 | Setup | *bruno.plus* with 2 active bookings; admin access to change plans |
-| Notes | 10:05 Booked 3 spots on Plus. 10:12 Downgraded to Basic during checkout: booking kept 3 spots (Basic limit is 2?). 10:20 Same on web: blocked correctly. |
-| Bugs | BUG-131 (Android keeps old plan limit during checkout) |
+| Notes | 10:05 Plus member with 2 active bookings opens a third. 10:12 Downgraded to Basic during checkout: third booking confirmed (Basic allows 2 active bookings, BK-104 R3). 10:20 Same on web: blocked correctly. |
+| Bugs | BUG-131 (Android applies the old plan's booking limit during checkout) |
 | Questions | Does a downgrade apply to existing bookings or only new ones? |
 | Ideas | Scripted case for downgrade during checkout on each platform |
 | Time split | 60 / 30 / 10 |

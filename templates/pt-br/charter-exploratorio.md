@@ -34,8 +34,8 @@
 | Tempo | 60 min |
 | Build / ambiente | 2.3.0 (412), staging, Android 14 e web |
 | Preparação | *bruno.plus* com 2 reservas ativas; acesso de admin para trocar plano |
-| Anotações | 10:05 Reservei 3 vagas no Plus. 10:12 Baixei para Basic durante a confirmação: a reserva manteve 3 vagas (o limite do Basic não é 2?). 10:20 Mesma coisa na web: bloqueou corretamente. |
-| Bugs | BUG-131 (Android mantém o limite do plano antigo durante a confirmação) |
+| Anotações | 10:05 Aluno Plus com 2 reservas ativas abre uma terceira. 10:12 Baixei para Basic durante a confirmação: a terceira reserva foi confirmada (o Basic permite 2 reservas ativas, R3 da BK-104). 10:20 Mesma coisa na web: bloqueou corretamente. |
+| Bugs | BUG-131 (Android aplica o limite de reservas do plano antigo durante a confirmação) |
 | Dúvidas | O downgrade vale para reservas existentes ou só para novas? |
 | Ideias | Caso roteirizado de downgrade durante a confirmação em cada plataforma |
 | Divisão do tempo | 60 / 30 / 10 |
