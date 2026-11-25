@@ -30,7 +30,6 @@ Todo documento traz um de dois selos:
 | [Plano de teste](templates/pt-br/plano-de-teste.md) | 📚 Referência de estudo |
 | [Caso de teste](templates/pt-br/caso-de-teste.md) | ✅ Aplicado na prática |
 | [Bug report](templates/pt-br/bug-report.md) | ✅ Aplicado na prática |
-| [História de usuário (PBI)](templates/pt-br/historia-de-usuario.md) | ✅ Checklist de revisão · 📚 formato de escrita |
 | [Melhoria](templates/pt-br/melhoria.md) | 📚 Referência de estudo |
 | [Task de QA](templates/pt-br/task.md) | ✅ Aplicado na prática |
 | [Relatório de dúvidas de PBI](templates/pt-br/relatorio-de-duvidas.md) | ✅ Aplicado na prática |
@@ -63,7 +62,6 @@ Cenário fictício, técnicas e decisões reais.
 
 ## Projetos relacionados
 - [Desafio-dti](https://github.com/M-Gatti/Desafio-dti): projeto de estudo com Cypress e BDD (📚 automação é área de estudo para mim; o foco atual é Playwright)
-- [teleprompter](https://github.com/M-Gatti/teleprompter): um PWA pequeno que fiz e publiquei no GitHub Pages
 
 ## Contato
 [LinkedIn](https://linkedin.com/in/gattisj) · gattimarcussj@gmail.com

@@ -30,7 +30,6 @@ Every document carries one of two labels:
 | [Test plan](templates/en/test-plan.md) | 📚 Study reference |
 | [Test case](templates/en/test-case.md) | ✅ Applied in practice |
 | [Bug report](templates/en/bug-report.md) | ✅ Applied in practice |
-| [User story (PBI)](templates/en/user-story.md) | ✅ Review checklist · 📚 writing format |
 | [Improvement](templates/en/improvement.md) | 📚 Study reference |
 | [QA task](templates/en/task.md) | ✅ Applied in practice |
 | [Story clarification report](templates/en/story-clarification-report.md) (questions on a user story) | ✅ Applied in practice |
@@ -63,7 +62,6 @@ Fictional scenario, real techniques and decisions.
 
 ## Related projects
 - [Desafio-dti](https://github.com/M-Gatti/Desafio-dti): study project with Cypress and BDD (📚 automation is a study area for me; Playwright is my current focus)
-- [teleprompter](https://github.com/M-Gatti/teleprompter): a small PWA I built and publish on GitHub Pages
 
 ## Contact
 [LinkedIn](https://linkedin.com/in/gattisj) · gattimarcussj@gmail.com
