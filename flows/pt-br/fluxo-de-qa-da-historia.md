@@ -4,7 +4,7 @@
 [English](../en/qa-flow-user-story.md)
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Refinamento] --> B[Revisão da história]
     B -->|clara| C[Design de teste]
     B -->|lacunas| Q[Dúvidas para PO / devs]

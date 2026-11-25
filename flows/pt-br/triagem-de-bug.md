@@ -5,7 +5,7 @@
 [English](../en/bug-triage.md)
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Defeito encontrado] --> B[Reproduzir e buscar duplicado]
     B --> C[Registrar com evidência]
     C --> D[Triagem: severidade, prioridade, responsável]

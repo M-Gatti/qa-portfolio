@@ -4,7 +4,7 @@
 [Português](../pt-br/fluxo-de-qa-da-historia.md)
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Refinement] --> B[Story review]
     B -->|clear| C[Test design]
     B -->|gaps| Q[Questions to PO / devs]

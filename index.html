@@ -1,264 +1,371 @@
 <!DOCTYPE html>
-<html lang="en" data-lang="en">
+<html lang="en" data-lang="en" data-motion="moderate">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Marcus Gatti QA Portfolio</title>
 <meta name="description" content="Marcus Gatti, QA Engineer (web and mobile). Templates, test design techniques, QA flows and a case study. All examples fictional.">
+<meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
-/* VOICE work: a QA professional's portfolio, read by recruiters and QA leads; calm, exact, confident
-   IDEA a well-kept test documentation library: sheets of real QA paperwork you can open and read
-   PICTURE two QA sheets (a test case over a bug report) in the hero, drawn in HTML from portfolio content
-   COLOUR white / deep night ground, near-black ink, cobalt #1240e0 as the one working colour, pale #eef2ff zones
-   TYPE Space Grotesk for titles, Inter for reading
-   LAYOUT laptop: intro left, sheets right, library grid below; reading view = contents list left, document right. Phone: stacked */
-:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0a0d18);--ink:light-dark(#0d0f14,#e8ebf5);--mute:light-dark(#596075,#9aa3bd);--line:light-dark(#e2e6f0,#1f2644);--pale:light-dark(#eef2ff,#111733);--card:light-dark(#ffffff,#0f1428);--cob:light-dark(#1240e0,#7b95ff);--oncob:light-dark(#ffffff,#0a0d18);--code:light-dark(#f5f7fc,#0d1224)}
-:root[data-theme=light]{color-scheme:light}
-:root[data-theme=dark]{color-scheme:dark}
+/* VOICE work: a QA professional's portfolio for recruiters and QA leads; lively but exact
+   IDEA a QA documentation library where every item carries a test-style status (applied = pass teal, study = in-progress amber)
+   PICTURE two QA sheets (test case over bug report) floating over soft indigo light in the hero
+   COLOUR off-white ground, deep indigo ink, indigo 600 for every action, teal/amber only for status, lilac only for decoration
+   TYPE Manrope for titles, Inter for reading
+   LAYOUT laptop: intro left, sheets right, stats strip peeking at the fold; then legend, start here, filterable library. Phone: stacked */
+:root{color-scheme:light;--bg:#f7f7fc;--surf:#ffffff;--ink:#1b1840;--mute:#5b5880;--line:#e4e2f1;--i50:#eef0ff;--i100:#e0e3ff;--i600:#4f46e5;--i700:#4338ca;--i800:#3730a3;--lil:#c4bdfb;--t700:#0f766e;--t50:#e6f6f3;--a800:#92400e;--a50:#fdf3e1;--code:#f4f4fb;--shadow:0 1px 2px rgba(27,24,64,.06),0 14px 32px -16px rgba(27,24,64,.28)}
 *{box-sizing:border-box;min-width:0}
-html{scroll-padding-top:84px}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
-a{color:var(--cob);text-underline-offset:3px}
-:focus-visible{outline:3px solid var(--cob);outline-offset:3px;border-radius:4px}
-h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
+a{color:var(--i700);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--i600);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{font-family:Manrope,Inter,sans-serif;letter-spacing:-.02em;line-height:1.1;text-wrap:balance;color:var(--ink)}
 [data-lang=en] .pt,[data-lang=pt] .en{display:none}
-.wrap{max-width:1240px;margin:0 auto;padding:0 max(5vw,16px)}
-#stage,footer,.nav,.brand small{transition:opacity .2s ease,transform .2s ease}
+.wrap{max-width:1200px;margin:0 auto;padding:0 max(5vw,16px)}
+svg.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.fade{transition:opacity .22s ease,transform .22s ease}
 .swap{opacity:0!important}
-#stage.swap{transform:translateY(6px)}
-@media(prefers-reduced-motion:reduce){#stage,footer,.nav,.brand small{transition:none}.seg i{transition:none}.lib a,.btn{transition:none}}
-/* header */
-header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;gap:12px 24px;min-height:64px;flex-wrap:wrap}
-.brand{display:flex;flex-direction:column;line-height:1.15;text-decoration:none;color:var(--ink);margin-right:auto}
-.brand b{font-family:"Space Grotesk",sans-serif;font-size:18px}
+#stage.swap{transform:translateY(8px)}
+header{position:sticky;top:0;z-index:20;background:rgba(247,247,252,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:10px 22px;min-height:66px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);margin-right:auto;border-radius:10px;padding:4px}
+.brand .mk{width:36px;height:36px;border-radius:10px;background:var(--i600);color:#fff;display:grid;place-items:center;font:800 15px Manrope,sans-serif}
+.brand b{display:block;font:700 17px/1.1 Manrope,sans-serif}
 .brand small{color:var(--mute);font-size:13px}
-.nav{display:flex;gap:4px 20px;flex-wrap:wrap}
-.nav a{color:var(--mute);text-decoration:none;font-weight:500;padding:10px 0}
-.nav a:hover,.nav a[aria-current=page]{color:var(--ink)}
-.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--pale)}
-.seg i{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--cob);transition:transform .25s ease}
+.nav{display:flex;gap:2px;flex-wrap:wrap}
+.nav button,.nav a{font:500 15px Inter,sans-serif;color:var(--mute);background:none;border:0;padding:10px 12px;border-radius:8px;cursor:pointer;text-decoration:none}
+.nav button:hover,.nav a:hover{color:var(--ink);background:var(--i50)}
+.repo{display:inline-flex;align-items:center;gap:6px;font:600 14px Inter,sans-serif;color:var(--ink);text-decoration:none;border:1px solid var(--line);background:var(--surf);border-radius:10px;padding:0 12px;min-height:40px}
+.repo:hover{border-color:var(--i600)}
+.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:12px;padding:3px;background:var(--surf)}
+.seg i{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:9px;background:var(--i600);transition:transform .28s cubic-bezier(.3,.7,.2,1)}
 [data-lang=pt] .seg i{transform:translateX(100%)}
-.seg button{position:relative;font:600 14px Inter,sans-serif;border:0;background:none;color:var(--ink);min-width:48px;min-height:38px;border-radius:999px;cursor:pointer;transition:color .25s}
-[data-lang=en] #b-en,[data-lang=pt] #b-pt{color:var(--oncob)}
-/* hero */
-.hero{background:var(--pale);border-bottom:1px solid var(--line)}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center;padding-top:clamp(36px,6vw,80px);padding-bottom:clamp(36px,6vw,80px)}
-.hero h1{font-size:clamp(40px,5.6vw,60px);margin:0 0 10px}
-.role{font-family:"Space Grotesk",sans-serif;font-size:clamp(19px,2vw,22px);font-weight:500;color:var(--cob);margin:0 0 18px}
-.intro{font-size:17px;max-width:58ch;margin:0 0 24px}
-.btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
-.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:10px;font-weight:600;text-decoration:none;border:1.5px solid var(--cob);transition:background .15s,color .15s}
-.btn.pri{background:var(--cob);color:var(--oncob)}
-.btn.sec{color:var(--cob);background:transparent}
-.btn.sec:hover{background:var(--card)}
-.legend{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:14px;color:var(--mute)}
-.chip{display:inline-flex;align-items:center;gap:6px;font:600 13px Inter,sans-serif;padding:4px 10px;border-radius:999px;white-space:nowrap}
-.chip.ap{background:var(--cob);color:var(--oncob)}
-.chip.st{border:1.5px solid var(--cob);color:var(--cob);padding:3px 9px}
-.chip.mx{border:1.5px dashed var(--cob);color:var(--cob);padding:3px 9px}
-.fine{font-size:14px;color:var(--mute);max-width:60ch;margin:16px 0 0}
-/* hero sheets */
-.sheets{position:relative;min-height:400px}
-.sheet{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:0 1px 2px rgba(10,13,24,.06),0 12px 28px -12px rgba(10,13,24,.25);font-size:14px}
-.sheet.back{top:0;right:0;width:84%;transform:rotate(2.5deg)}
-.sheet.front{bottom:0;left:0;width:90%;transform:rotate(-1.5deg)}
+.seg button{position:relative;font:600 14px Inter,sans-serif;border:0;background:none;color:var(--mute);min-width:46px;min-height:36px;border-radius:9px;cursor:pointer;transition:color .28s}
+[data-lang=en] #b-en,[data-lang=pt] #b-pt{color:#fff}
+.tag{display:inline-flex;align-items:center;gap:6px;font:600 12.5px/1 Inter,sans-serif;padding:6px 9px;border-radius:6px;white-space:nowrap;cursor:default;user-select:none}
+.tag svg{width:14px;height:14px}
+.tag.ap{background:var(--t50);color:var(--t700)}
+.tag.st{background:var(--a50);color:var(--a800)}
+.tag.mx{background:linear-gradient(90deg,var(--t50) 50%,var(--a50) 50%);color:var(--ink)}
+.hero{position:relative;overflow:hidden;background:var(--i50)}
+.blobs{position:absolute;inset:0;pointer-events:none}
+.blobs span{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55}
+.blobs .b1{width:420px;height:420px;background:var(--lil);right:-80px;top:-120px}
+.blobs .b2{width:360px;height:360px;background:var(--i100);left:-120px;bottom:-140px}
+.blobs .b3{width:260px;height:260px;background:#d9f3ee;right:32%;bottom:-120px;opacity:.6}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,64px);align-items:center;padding-top:clamp(40px,6vw,84px);padding-bottom:28px}
+.hero .wrap.low{display:block;padding-top:0;padding-bottom:14px}
+.kick{display:inline-flex;align-items:center;gap:8px;font:600 14px Inter,sans-serif;color:var(--i800);background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:6px 12px;margin-bottom:18px}
+.kick .dot{width:8px;height:8px;border-radius:50%;background:var(--t700);box-shadow:0 0 0 4px var(--t50)}
+.hero h1{font-size:clamp(42px,6vw,66px);font-weight:800;margin:0 0 8px}
+.role{font:700 clamp(19px,2.1vw,23px) Manrope,sans-serif;color:var(--i700);margin:0 0 16px}
+.intro{font-size:17px;max-width:56ch;margin:0 0 26px;color:var(--ink)}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border-radius:12px;font:600 15px Inter,sans-serif;text-decoration:none;cursor:pointer;border:1.5px solid var(--i600);transition:transform .15s,box-shadow .15s,background .15s}
+.btn.pri{background:var(--i600);color:#fff;box-shadow:0 8px 20px -10px var(--i600)}
+.btn.pri:hover{transform:translateY(-1px);background:var(--i700)}
+.btn.sec{background:var(--surf);color:var(--i700)}
+.btn.sec:hover{background:var(--i50)}
+.sheets{position:relative;min-height:390px;transition:transform .3s ease}
+.sheet{position:absolute;background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);font-size:14px}
+.sheet.back{top:6px;right:0;width:84%;--r:2.5deg;transform:rotate(var(--r));animation:floatB 7s ease-in-out infinite}
+.sheet.front{bottom:6px;left:0;width:90%;--r:-1.5deg;transform:rotate(var(--r));animation:floatA 6s ease-in-out infinite}
+@keyframes floatA{50%{transform:rotate(var(--r)) translateY(-8px)}}
+@keyframes floatB{50%{transform:rotate(var(--r)) translateY(6px)}}
 .sheet .k{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px;color:var(--mute);font-size:13px}
-.sheet h4{font:600 16px/1.3 "Space Grotesk",sans-serif;margin:0 0 12px}
+.sheet h4{font:700 16px/1.3 Manrope,sans-serif;margin:0 0 10px}
 .sheet table{width:100%;border-collapse:collapse;font-size:13px}
 .sheet td{border-top:1px solid var(--line);padding:7px 6px;vertical-align:top}
-.sheet td:first-child{color:var(--cob);font-weight:600;width:24px}
-.bar{height:8px;border-radius:4px;background:var(--pale);margin:7px 0}
-.sev{font-weight:600;color:var(--cob)}
-/* sections */
-.band{padding:clamp(40px,5vw,72px) 0}
-.band h2{font-size:clamp(28px,3.4vw,38px);margin:0 0 8px}
-.lede{color:var(--mute);margin:0 0 28px;max-width:66ch}
+.sheet td:first-child{color:var(--i600);font-weight:700;width:22px}
+.ln{height:8px;border-radius:4px;background:var(--i50);margin:7px 0}
+.sev{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:#b42318}
+.sev::before{content:"";width:8px;height:8px;border-radius:50%;background:#d92d20}
+.stats{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:10px}
+.stat{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.stat b{display:block;font:800 clamp(26px,3vw,34px)/1 Manrope,sans-serif;color:var(--i700)}
+.stat span{font-size:14px;color:var(--mute)}
+.cue{display:flex;flex-direction:column;align-items:center;gap:2px;margin:20px auto 0;font:500 13px Inter,sans-serif;color:var(--mute);background:none;border:0;cursor:pointer;padding:8px 16px}
+.cue svg{width:22px;height:22px;animation:bob 1.8s ease-in-out infinite;color:var(--i600)}
+@keyframes bob{50%{transform:translateY(5px)}}
+.band{padding:clamp(44px,5.5vw,80px) 0}
+.eyebrow{font:600 14px Inter,sans-serif;color:var(--i600);margin:0 0 6px}
+.band h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;margin:0 0 10px}
+.lede{color:var(--mute);margin:0 0 28px;max-width:64ch;font-size:17px}
+.howto{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.howto>div{background:var(--surf);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.howto p{margin:10px 0 0;color:var(--mute);font-size:15px}
+.howto .ttl{font:700 16px Manrope,sans-serif;color:var(--ink);display:flex;align-items:center;gap:8px}
 .start{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.start a{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:14px;background:var(--pale);color:var(--ink);text-decoration:none;border:1px solid transparent;transition:border-color .15s}
-.start a:hover{border-color:var(--cob)}
-.start b{font:600 20px/1.2 "Space Grotesk",sans-serif}
-.start span{color:var(--mute);font-size:15px}
-.start em{font-style:normal;color:var(--cob);font-weight:600;margin-top:auto}
-.libsec{margin-top:34px}
-.libsec h3{font-size:22px;margin:0 0 12px;display:flex;align-items:baseline;gap:10px}
-.libsec h3 small{font:500 14px Inter,sans-serif;color:var(--mute)}
-.lib{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.lib a{display:flex;flex-direction:column;gap:10px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;color:var(--ink);text-decoration:none;background:var(--card);transition:border-color .15s,transform .15s}
-.lib a:hover{border-color:var(--cob);transform:translateY(-2px)}
-.lib b{font-weight:600;line-height:1.3}
-.lib span.d{font-size:14px;color:var(--mute)}
-.lib .chip{align-self:flex-start;margin-top:auto}
+.card{position:relative;display:flex;flex-direction:column;gap:10px;padding:22px;border-radius:16px;background:var(--surf);border:1px solid var(--line);color:var(--ink);text-decoration:none;transition:border-color .2s,box-shadow .2s,transform .25s ease}
+.card:hover{border-color:var(--i600);box-shadow:var(--shadow)}
+.start .card{min-height:230px}
+.card .ico{width:44px;height:44px;border-radius:12px;background:var(--i50);color:var(--i700);display:grid;place-items:center}
+.card .ico svg{width:22px;height:22px}
+.card b{font:700 20px/1.25 Manrope,sans-serif}
+.card .d{color:var(--mute);font-size:15px}
+.card .go{margin-top:auto;display:inline-flex;align-items:center;gap:6px;color:var(--i700);font-weight:600}
+.card .go svg{transition:transform .2s}
+.card:hover .go svg{transform:translateX(4px)}
+.card .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .2s}
+.filters{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin-bottom:22px}
+.fgroup{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fgroup>span{font-size:14px;color:var(--mute);margin-right:4px}
+.fbtn{font:500 14px Inter,sans-serif;color:var(--ink);background:var(--surf);border:1px solid var(--line);border-radius:10px;padding:0 14px;min-height:40px;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.fbtn:hover{border-color:var(--i600)}
+.fbtn[aria-pressed=true]{background:var(--i600);border-color:var(--i600);color:#fff}
+.lib{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.lib .card{padding:18px 20px;gap:8px;background:var(--bg)}
+.lib .card b{font-size:17px}
+.lib .meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
+.lib .sec{font-size:13px;color:var(--mute)}
+.empty{color:var(--mute);padding:20px;border:1px dashed var(--line);border-radius:12px}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.box{border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:var(--card)}
-.box h3{margin:0 0 10px;font-size:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.box{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--surf)}
+.box h3{margin:0 0 12px;font-size:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .box ul{margin:0;padding-left:20px}
-.box li{margin:7px 0}
-.proj{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.proj a{display:block;padding:20px 22px;border:1px solid var(--line);border-radius:14px;color:var(--ink);text-decoration:none;background:var(--card)}
-.proj a:hover{border-color:var(--cob)}
-.proj b{font:600 19px "Space Grotesk",sans-serif}
-.proj p{margin:6px 0 12px;color:var(--mute)}
-footer{background:var(--pale);border-top:1px solid var(--line)}
-footer .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;padding-top:44px;padding-bottom:44px}
-footer h2{font-size:30px;margin:0 0 10px}
-footer p{margin:4px 0}
-/* reader */
-.reader{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(24px,4vw,56px);padding-top:32px;padding-bottom:64px}
-.toc{position:sticky;top:88px;align-self:start;max-height:calc(100vh - 110px);overflow:auto;padding-right:6px}
-.toc p{font:600 13px Inter,sans-serif;color:var(--mute);margin:18px 0 6px}
-.toc p:first-child{margin-top:0}
-.toc a{display:block;padding:6px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:15px;line-height:1.35}
-.toc a:hover{background:var(--pale)}
-.toc a[aria-current=page]{background:var(--cob);color:var(--oncob)}
-.tocm{display:none;margin-bottom:12px}
-.tocm summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;padding:0 14px}
-.crumb{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:14px;color:var(--mute);margin-bottom:14px}
-article{max-width:780px}
-article h1{font-size:clamp(30px,3.6vw,40px);margin:0 0 14px}
-article h2{font-size:26px;margin:40px 0 12px;padding-top:6px}
-article h3{font-size:20px;margin:28px 0 10px}
+.box li{margin:8px 0}
+.next{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.next>div{border:1.5px dashed var(--lil);border-radius:16px;padding:20px;background:var(--surf)}
+.next b{font:700 17px Manrope,sans-serif;display:block;margin:10px 0 6px}
+.next p{margin:0;color:var(--mute);font-size:15px}
+.soon{display:inline-flex;font:600 12.5px Inter,sans-serif;color:var(--i800);background:var(--i50);border-radius:6px;padding:5px 9px}
+.proj{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+footer{background:var(--ink);color:#eceaff}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;padding-top:48px;padding-bottom:48px}
+footer h2{font-size:32px;color:#fff;margin:0 0 10px}
+footer a{color:#c7c2ff}
+footer p{margin:5px 0}
+footer .fine{color:#b9b6dd;font-size:14px;margin-top:16px}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
+[data-motion=rich] .blobs span{animation:drift 14s ease-in-out infinite alternate}
+[data-motion=rich] .blobs .b2{animation-duration:18s;animation-direction:alternate-reverse}
+[data-motion=rich] .blobs .b3{animation-duration:11s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,40px) scale(1.12)}100%{transform:translate(40px,-30px) scale(.95)}}
+[data-motion=rich] .card .glare{background:radial-gradient(circle at var(--gx,50%) var(--gy,50%),rgba(79,70,229,.14),transparent 55%)}
+[data-motion=rich] .card:hover .glare{opacity:1}
+[data-motion=moderate] .sheet{animation-duration:9s}
+.reader{display:grid;grid-template-columns:272px minmax(0,1fr);gap:clamp(24px,4vw,56px);padding-top:28px;padding-bottom:64px}
+.toc{position:sticky;top:86px;align-self:start;max-height:calc(100vh - 106px);overflow:auto;padding:4px 6px 4px 0}
+.backlink{display:inline-flex;align-items:center;gap:6px;font:600 14px Inter,sans-serif;color:var(--i700);background:none;border:0;padding:8px 0;cursor:pointer;margin-bottom:8px}
+.grp{border-bottom:1px solid var(--line)}
+.grp summary{list-style:none;display:flex;align-items:center;gap:8px;cursor:pointer;padding:12px 4px;font:700 15px Manrope,sans-serif;color:var(--ink)}
+.grp summary::-webkit-details-marker{display:none}
+.grp summary .n{margin-left:auto;font:600 12px Inter,sans-serif;color:var(--mute);background:var(--i50);border-radius:6px;padding:3px 7px}
+.grp summary>svg:last-child{transition:transform .2s;color:var(--mute)}
+.grp[open] summary>svg:last-child{transform:rotate(90deg)}
+.grp .items{padding:0 0 10px 6px}
+.grp a{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:14.5px;line-height:1.35;border-left:2px solid transparent}
+.grp a:hover{background:var(--i50)}
+.grp a[aria-current=page]{background:var(--i50);border-left-color:var(--i600);color:var(--i800);font-weight:600}
+.grp a i{width:7px;height:7px;border-radius:50%;flex:none}
+.grp a i.ap{background:var(--t700)}.grp a i.st{background:#d97706}.grp a i.mx{background:linear-gradient(90deg,var(--t700) 50%,#d97706 50%)}
+.tocm{display:none;margin-bottom:14px}
+.tocm>summary{cursor:pointer;font-weight:600;min-height:46px;display:flex;align-items:center;border:1px solid var(--line);border-radius:12px;padding:0 14px;background:var(--surf);list-style:none}
+.dochead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.dochead .where{display:flex;align-items:center;gap:10px;color:var(--mute);font-size:14px;flex-wrap:wrap}
+.src{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--mute);text-decoration:none;border-radius:8px;padding:6px 8px}
+.src:hover{color:var(--i700);background:var(--i50)}
+article{max-width:800px;background:var(--surf);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,3.4vw,40px)}
+article h1{font-size:clamp(28px,3.6vw,38px);font-weight:800;margin:0 0 16px}
+article h2{font-size:25px;margin:40px 0 12px}
+article h3{font-size:19px;margin:28px 0 10px}
 article p,article li{max-width:70ch}
-article hr{border:0;border-top:1px solid var(--line);margin:32px 0}
-article blockquote{margin:18px 0;padding:14px 18px;border-left:4px solid var(--cob);background:var(--pale);border-radius:0 10px 10px 0}
+article hr{border:0;border-top:1px solid var(--line);margin:30px 0}
+article blockquote{margin:18px 0;padding:14px 18px;border-left:4px solid var(--i600);background:var(--i50);border-radius:0 12px 12px 0}
 article blockquote p{margin:4px 0}
-article .lab{padding:12px 16px;border-radius:10px;background:var(--pale);font-size:15px}
-article .lab.ap{border-left:4px solid var(--cob)}
-article .lab.st{border-left:4px dashed var(--cob)}
+article .lab{padding:12px 16px;border-radius:12px;font-size:15px;border:1px solid transparent}
+article .lab.ap{background:var(--t50);border-color:#bfe6de}
+article .lab.st{background:var(--a50);border-color:#f4dcb0}
 article code{font:14px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:2px 5px;border-radius:5px;overflow-wrap:anywhere}
-article pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto}
+article pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}
 article pre code{background:none;padding:0;overflow-wrap:normal}
-.tbl{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:10px}
+.tbl{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:12px}
 article table{border-collapse:collapse;width:100%;font-size:15px}
-article th{background:var(--pale);text-align:left;font-weight:600}
+article th{background:var(--i50);text-align:left;font-weight:600}
 article th,article td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
 article tr:last-child td{border-bottom:0}
-.mermaid svg{max-width:min(100%,640px)!important;height:auto}
-.mermaid{margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:10px;overflow-x:auto;text-align:center;background:var(--card)}
-.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px;max-width:780px}
-.pager a{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink)}
-.pager a:hover{border-color:var(--cob)}
-.pager small{display:block;color:var(--mute)}
-.pager .nx{text-align:right;grid-column:2}
+.dgm{position:relative;margin:18px 0;border:1px solid var(--line);border-radius:12px;background:var(--surf);padding:46px 14px 14px;overflow-x:auto;text-align:center}
+.dgm .mermaid svg{max-width:100%;height:auto}
+.expand{position:absolute;top:8px;right:8px;display:inline-flex;align-items:center;gap:6px;font:600 13px Inter,sans-serif;color:var(--i700);background:var(--surf);border:1px solid var(--line);border-radius:8px;padding:0 10px;min-height:34px;cursor:pointer;z-index:1}
+.expand:hover{border-color:var(--i600)}
+.docfoot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:22px;max-width:800px}
+.docfoot a,.docfoot button{display:inline-flex;align-items:center;gap:8px;font:600 15px Inter,sans-serif;color:var(--i700);text-decoration:none;background:none;border:0;cursor:pointer;padding:10px 4px}
+.docfoot .nx{margin-left:auto;text-align:right}
 .msg{padding:18px;border:1px dashed var(--line);border-radius:12px;color:var(--mute)}
-@media(max-width:960px){.lib,.start{grid-template-columns:repeat(2,minmax(0,1fr))}.reader{grid-template-columns:minmax(0,1fr)}.toc{display:none}.tocm{display:block}}
-@media(max-width:760px){.hero .wrap,.two,.proj,footer .wrap{grid-template-columns:minmax(0,1fr)}.sheets{min-height:360px}.nav{display:none}}
-@media(max-width:560px){.lib,.start{grid-template-columns:minmax(0,1fr)}.sheet.back{width:92%}.sheet.front{width:96%}.sheets{min-height:390px}article table{font-size:14px}.pager{grid-template-columns:minmax(0,1fr)}.pager .nx{grid-column:1}}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(27,24,64,.55);display:none;align-items:center;justify-content:center;padding:16px}
+.lb.on{display:flex}
+.lbin{background:var(--surf);border-radius:16px;width:min(1200px,100%);height:min(88vh,900px);display:flex;flex-direction:column;overflow:hidden}
+.lbbar{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line)}
+.lbbar b{margin-right:auto;font:700 15px Manrope,sans-serif}
+.lbbar button{font:600 14px Inter,sans-serif;min-width:40px;min-height:38px;border:1px solid var(--line);background:var(--surf);border-radius:9px;cursor:pointer;color:var(--ink)}
+.lbview{flex:1;overflow:auto;padding:20px;display:flex}
+.lbview svg{display:block;margin:auto;max-width:none!important}
+.mp{position:fixed;right:16px;bottom:16px;z-index:40;background:var(--ink);color:#fff;border-radius:14px;padding:10px 12px;box-shadow:var(--shadow);font-size:13px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;max-width:calc(100vw - 32px)}
+.mp button{font:600 13px Inter,sans-serif;border:1px solid #57538a;background:transparent;color:#fff;border-radius:8px;min-height:34px;padding:0 10px;cursor:pointer}
+.mp button[aria-pressed=true]{background:#fff;color:var(--ink);border-color:#fff}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sheet,.blobs span,.cue svg{animation:none!important}.js .rv{opacity:1;transform:none;transition:none}}
+@media(max-width:1000px){.lib,.start,.howto,.next{grid-template-columns:repeat(2,minmax(0,1fr))}.reader{grid-template-columns:minmax(0,1fr)}.toc{display:none}.tocm{display:block}.nav{display:none}}
+@media(max-width:760px){.hero .wrap,.two,.proj,footer .wrap{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.sheets{min-height:350px}.repo span{display:none}}
+.mp-x{}
+@media(max-width:560px){.mp{left:50%;right:auto;transform:translateX(-50%);bottom:10px;padding:6px 8px;font-size:12px}.mp>span{display:none}.lib,.start,.howto,.next{grid-template-columns:minmax(0,1fr)}.sheet.back{width:94%}.sheet.front{width:97%}.sheets{min-height:380px}article table{font-size:14px}.brand small{display:none}.start .card{min-height:0}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5v14z"/><path d="M6.5 17A2.5 2.5 0 0 0 4 19.5 2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-expand" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v4a3 3 0 0 0 3 3H14"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-case" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-gh" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9a3.4 3.4 0 0 0-.9-2.6c3.1-.4 6.4-1.5 6.4-7A5.4 5.4 0 0 0 20 4.8 5 5 0 0 0 19.9 1S18.7.6 16 2.5a13.4 13.4 0 0 0-7 0C6.3.6 5.1 1 5.1 1A5 5 0 0 0 5 4.8a5.4 5.4 0 0 0-1.5 3.7c0 5.4 3.3 6.6 6.4 7a3.4 3.4 0 0 0-.9 2.6V22"/></symbol>
+</svg>
+
 <header><div class="wrap">
-  <a class="brand" href="#home"><b>Marcus Gatti</b><small><span class="en">QA portfolio</span><span class="pt">Portfólio de QA</span></small></a>
-  <nav class="nav" aria-label="Main">
-    <a href="#home" data-nav="home"><span class="en">Home</span><span class="pt">Início</span></a>
-    <a href="#home-library" data-nav="lib"><span class="en">Library</span><span class="pt">Biblioteca</span></a>
-    <a href="#case-study" data-nav="case-study"><span class="en">Case study</span><span class="pt">Estudo de caso</span></a>
-    <a href="https://github.com/M-Gatti/qa-portfolio">GitHub</a>
+  <a class="brand" href="#" data-go="top" aria-label="Marcus Gatti, home"><span class="mk">MG</span><span><b>Marcus Gatti</b><small class="fade"><span class="en">QA Engineer · portfolio</span><span class="pt">QA Engineer · portfólio</span></small></span></a>
+  <nav class="nav fade" aria-label="Main">
+    <button type="button" data-go="start"><span class="en">Start here</span><span class="pt">Comece aqui</span></button>
+    <button type="button" data-go="library"><span class="en">Library</span><span class="pt">Biblioteca</span></button>
+    <a href="#case-study"><span class="en">Case study</span><span class="pt">Estudo de caso</span></a>
+    <button type="button" data-go="contact"><span class="en">Contact</span><span class="pt">Contato</span></button>
   </nav>
+  <a class="repo" href="https://github.com/M-Gatti/qa-portfolio" target="_blank" rel="noopener"><svg class="ic"><use href="#i-gh"/></svg><span class="en">Repository</span><span class="pt">Repositório</span></a>
   <div class="seg" role="group" aria-label="Language / Idioma"><i aria-hidden="true"></i>
     <button id="b-en" type="button" data-set="en" aria-pressed="true">EN</button>
     <button id="b-pt" type="button" data-set="pt" aria-pressed="false">PT</button>
   </div>
 </div></header>
 
-<div id="stage">
+<div id="stage" class="fade">
 <main id="home-view">
-<section class="hero"><div class="wrap">
-  <div>
-    <h1>Marcus Gatti</h1>
-    <p class="role"><span class="en">QA Engineer · web and mobile</span><span class="pt">QA Engineer · web e mobile</span></p>
-    <p class="intro en">About 2.5 years testing web, Android and iOS apps in Agile teams, working remotely from Belo Horizonte, Brazil. This is the documentation I work with: templates, test design techniques, QA flows and a case study, organized along the ISTQB CTFL v4.0 syllabus.</p>
-    <p class="intro pt">Cerca de 2,5 anos testando apps web, Android e iOS em times ágeis, remoto de Belo Horizonte (MG). Esta é a documentação com que trabalho: templates, técnicas de design de teste, fluxos de QA e um estudo de caso, organizados pelo syllabus ISTQB CTFL v4.0.</p>
-    <div class="btns">
-      <a class="btn pri" href="#case-study"><span class="en">Read the case study</span><span class="pt">Ler o estudo de caso</span></a>
-      <a class="btn sec" href="#home-library"><span class="en">Browse the library</span><span class="pt">Ver a biblioteca</span></a>
+<section class="hero" id="top">
+  <div class="blobs" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+  <div class="wrap">
+    <div>
+      <span class="kick"><span class="dot"></span><span class="en">Open to remote QA work</span><span class="pt">Aberto a trabalho remoto de QA</span></span>
+      <h1>Marcus Gatti</h1>
+      <p class="role"><span class="en">QA Engineer · web and mobile</span><span class="pt">QA Engineer · web e mobile</span></p>
+      <p class="intro en">About 2.5 years testing web, Android and iOS apps in Agile teams. Here is how I work: the templates, test design techniques and QA flows I use, plus a case study, organized along the ISTQB CTFL v4.0 syllabus.</p>
+      <p class="intro pt">Cerca de 2,5 anos testando apps web, Android e iOS em times ágeis. Aqui está como eu trabalho: os templates, as técnicas de design de teste e os fluxos de QA que uso, mais um estudo de caso, organizados pelo syllabus ISTQB CTFL v4.0.</p>
+      <div class="btns">
+        <button class="btn pri" type="button" data-go="start"><span class="en">Start here</span><span class="pt">Comece por aqui</span><svg class="ic"><use href="#i-down"/></svg></button>
+        <a class="btn sec" href="#case-study"><span class="en">Read the case study</span><span class="pt">Ler o estudo de caso</span></a>
+      </div>
     </div>
-    <div class="legend"><span class="en">Every document says how I know it:</span><span class="pt">Cada documento diz de onde vem:</span>
-      <span class="chip ap"><span class="en">Applied in practice</span><span class="pt">Aplicado na prática</span></span>
-      <span class="chip st"><span class="en">Study reference</span><span class="pt">Referência de estudo</span></span>
-    </div>
-    <p class="fine en">All examples are fictional (<em>TrilhaFit</em>, an invented gym class booking app). I am preparing for the CTFL v4.0 exam, planned for 2027.</p>
-    <p class="fine pt">Todos os exemplos são fictícios (<em>TrilhaFit</em>, um app inventado de reserva de aulas de academia). Estou me preparando para a prova da CTFL v4.0, prevista para 2027.</p>
-  </div>
-  <div class="sheets" aria-hidden="true">
-    <div class="sheet back">
-      <div class="k"><span>BUG-129</span><span class="sev"><span class="en">Severity: High</span><span class="pt">Severidade: Alta</span></span></div>
-      <h4 class="en">[Waitlist] Promoted member gets no notification when class starts in under 2 h</h4>
-      <h4 class="pt">[Lista de espera] Aluna promovida não recebe notificação quando a aula começa em menos de 2 h</h4>
-      <div class="bar" style="width:92%"></div><div class="bar" style="width:76%"></div><div class="bar" style="width:84%"></div>
-    </div>
-    <div class="sheet front">
-      <div class="k"><span>TC-0107 · BK-104</span><span class="chip ap"><span class="en">Applied in practice</span><span class="pt">Aplicado na prática</span></span></div>
-      <h4 class="en">[Booking] Book a class with one spot left: booking confirmed, class becomes full</h4>
-      <h4 class="pt">[Reserva] Reservar aula com 1 vaga restante: reserva confirmada e aula lotada</h4>
-      <table>
-        <tr><td>1</td><td class="en">Open the class: shows "1 spot left"</td><td class="pt">Abrir a aula: mostra "1 vaga restante"</td></tr>
-        <tr><td>2</td><td class="en">Tap Book: "You're booked!"</td><td class="pt">Tocar em Reservar: "Reserva feita!"</td></tr>
-        <tr><td>3</td><td class="en">Another member sees "Full" and Join waitlist</td><td class="pt">Outro aluno vê "Lotada" e Entrar na lista de espera</td></tr>
-      </table>
+    <div class="sheets" id="sheets" aria-hidden="true">
+      <div class="sheet back">
+        <div class="k"><span>BUG-129</span><span class="sev"><span class="en">High</span><span class="pt">Alta</span></span></div>
+        <h4 class="en">[Waitlist] Promoted member gets no notification when class starts in under 2 h</h4>
+        <h4 class="pt">[Lista de espera] Aluna promovida não recebe notificação quando a aula começa em menos de 2 h</h4>
+        <div class="ln" style="width:92%"></div><div class="ln" style="width:74%"></div><div class="ln" style="width:84%"></div>
+      </div>
+      <div class="sheet front">
+        <div class="k"><span>TC-0107 · BK-104</span><span class="tag ap"><svg class="ic"><use href="#i-check"/></svg><span class="en">Passed</span><span class="pt">Passou</span></span></div>
+        <h4 class="en">[Booking] Book a class with one spot left: booking confirmed, class becomes full</h4>
+        <h4 class="pt">[Reserva] Reservar aula com 1 vaga restante: reserva confirmada e aula lotada</h4>
+        <table>
+          <tr><td>1</td><td class="en">Open the class: shows "1 spot left"</td><td class="pt">Abrir a aula: mostra "1 vaga restante"</td></tr>
+          <tr><td>2</td><td class="en">Tap Book: "You're booked!"</td><td class="pt">Tocar em Reservar: "Reserva feita!"</td></tr>
+          <tr><td>3</td><td class="en">Another member sees "Full"</td><td class="pt">Outro aluno vê "Lotada"</td></tr>
+        </table>
+      </div>
     </div>
   </div>
+  <div class="wrap low">
+    <div class="stats" id="stats"></div>
+    <button class="cue" type="button" data-go="howto"><span class="en">Scroll to see more</span><span class="pt">Role para ver mais</span><svg class="ic"><use href="#i-down"/></svg></button>
+  </div>
+</section>
+
+<section class="band" id="howto" style="padding-bottom:0"><div class="wrap rv">
+  <p class="eyebrow"><span class="en">How to read this portfolio</span><span class="pt">Como ler este portfólio</span></p>
+  <div class="howto">
+    <div><span class="tag ap"><svg class="ic"><use href="#i-check"/></svg><span class="en">Applied in practice</span><span class="pt">Aplicado na prática</span></span><p class="en">I have used it in real projects: web and mobile apps, Agile squads, Azure DevOps and Jira.</p><p class="pt">Já usei em projeto real: apps web e mobile, squads ágeis, Azure DevOps e Jira.</p></div>
+    <div><span class="tag st"><svg class="ic"><use href="#i-book"/></svg><span class="en">Study reference</span><span class="pt">Referência de estudo</span></span><p class="en">Built while studying the syllabus and related standards; not yet part of my day-to-day work.</p><p class="pt">Montado no estudo do syllabus e das normas; ainda não faz parte do meu dia a dia.</p></div>
+    <div><span class="ttl"><svg class="ic"><use href="#i-case"/></svg><span class="en">Fictional examples</span><span class="pt">Exemplos fictícios</span></span><p class="en">Every example uses TrilhaFit, an invented gym booking app. No client data. CTFL v4.0 exam planned for 2027.</p><p class="pt">Todo exemplo usa o TrilhaFit, um app inventado de academia. Nenhum dado de cliente. Prova da CTFL v4.0 prevista para 2027.</p></div>
+  </div>
+</div></section>
+
+<section class="band" id="start"><div class="wrap">
+  <div class="rv"><p class="eyebrow"><span class="en">Start here</span><span class="pt">Comece por aqui</span></p>
+  <h2><span class="en">Three documents that show how I work</span><span class="pt">Três documentos que mostram como eu trabalho</span></h2>
+  <p class="lede"><span class="en">If you only have five minutes, read these.</span><span class="pt">Se você tiver só cinco minutos, leia estes.</span></p></div>
+  <div class="start">
+    <a class="card tilt rv" href="#case-study"><span class="glare"></span><span class="ico"><svg class="ic"><use href="#i-case"/></svg></span><b class="en">Case study</b><b class="pt">Estudo de caso</b><span class="d en">From one test plan per sprint to a test repository by journey, with an AI-assisted workflow under human approval.</span><span class="d pt">De um plano de teste por sprint para um repositório por jornada, com um fluxo assistido por IA sob aprovação humana.</span><span class="go"><span class="en">Read</span><span class="pt">Ler</span><svg class="ic"><use href="#i-arrow"/></svg></span></a>
+    <a class="card tilt rv" href="#techniques"><span class="glare"></span><span class="ico"><svg class="ic"><use href="#i-grid"/></svg></span><b class="en">Test design techniques</b><b class="pt">Técnicas de design de teste</b><span class="d en">Six techniques from the CTFL v4.0 syllabus, each solved on the same example.</span><span class="d pt">Seis técnicas do syllabus CTFL v4.0, cada uma resolvida no mesmo exemplo.</span><span class="go"><span class="en">Read</span><span class="pt">Ler</span><svg class="ic"><use href="#i-arrow"/></svg></span></a>
+    <a class="card tilt rv" href="#fail-vs-blocked"><span class="glare"></span><span class="ico"><svg class="ic"><use href="#i-flow"/></svg></span><b class="en">Fail vs Blocked</b><b class="pt">Fail × Blocked</b><span class="d en">The decision that keeps a board honest: was it wrong, or could it not be tested?</span><span class="d pt">A decisão que mantém o board honesto: estava errado, ou não deu para testar?</span><span class="go"><span class="en">Read</span><span class="pt">Ler</span><svg class="ic"><use href="#i-arrow"/></svg></span></a>
+  </div>
+</div></section>
+
+<section class="band" id="library" style="background:var(--surf);border-block:1px solid var(--line)"><div class="wrap">
+  <div class="rv"><p class="eyebrow"><span class="en">Library</span><span class="pt">Biblioteca</span></p>
+  <h2><span class="en">Everything in the portfolio</span><span class="pt">Tudo o que tem no portfólio</span></h2>
+  <p class="lede"><span class="en">Filter by type or by how I know it. Every document opens right here, in English or Portuguese.</span><span class="pt">Filtre por tipo ou por de onde vem. Todo documento abre aqui mesmo, em português ou inglês.</span></p></div>
+  <div class="filters rv">
+    <div class="fgroup" id="f-type"></div>
+    <div class="fgroup" id="f-lab"></div>
+  </div>
+  <div class="lib" id="lib"></div>
 </div></section>
 
 <section class="band"><div class="wrap">
-  <h2><span class="en">Start here</span><span class="pt">Comece por aqui</span></h2>
-  <p class="lede"><span class="en">Three documents that show how I work.</span><span class="pt">Três documentos que mostram como eu trabalho.</span></p>
-  <div class="start">
-    <a href="#case-study"><b class="en">Case study</b><b class="pt">Estudo de caso</b><span class="en">From one test plan per sprint to a test repository by journey, with an AI-assisted workflow under human approval.</span><span class="pt">De um plano de teste por sprint para um repositório por jornada, com um fluxo assistido por IA sob aprovação humana.</span><em class="en">Read</em><em class="pt">Ler</em></a>
-    <a href="#techniques"><b class="en">Test design techniques</b><b class="pt">Técnicas de design de teste</b><span class="en">Six techniques from the CTFL v4.0 syllabus, each solved on the same example.</span><span class="pt">Seis técnicas do syllabus CTFL v4.0, cada uma resolvida no mesmo exemplo.</span><em class="en">Read</em><em class="pt">Ler</em></a>
-    <a href="#fail-vs-blocked"><b class="en">Fail vs Blocked</b><b class="pt">Fail × Blocked</b><span class="en">The decision that keeps a board honest: was it wrong, or could it not be tested?</span><span class="pt">A decisão que mantém o board honesto: estava errado, ou não deu para testar?</span><em class="en">Read</em><em class="pt">Ler</em></a>
-  </div>
-
-  <div id="home-library"></div>
-  <div id="lib"></div>
-</div></section>
-
-<section class="band" style="background:var(--pale)"><div class="wrap">
-  <h2><span class="en">Practice and study, kept apart</span><span class="pt">Prática e estudo, sem misturar</span></h2>
-  <p class="lede"><span class="en">What I do at work today, and what I am learning next.</span><span class="pt">O que faço no trabalho hoje, e o que estou aprendendo.</span></p>
+  <div class="rv"><p class="eyebrow"><span class="en">Skills</span><span class="pt">Competências</span></p>
+  <h2><span class="en">Practice and study, kept apart</span><span class="pt">Prática e estudo, sem misturar</span></h2></div>
   <div class="two">
-    <div class="box"><h3><span class="en">In practice</span><span class="pt">Na prática</span><span class="chip ap"><span class="en">Applied</span><span class="pt">Aplicado</span></span></h3>
+    <div class="box rv"><h3><span class="en">In practice</span><span class="pt">Na prática</span><span class="tag ap"><svg class="ic"><use href="#i-check"/></svg><span class="en">Applied</span><span class="pt">Aplicado</span></span></h3>
       <ul class="en"><li>Functional, exploratory, regression, smoke and sanity testing on web, Android and iOS</li><li>Test design: equivalence partitioning, boundary values, decision tables</li><li>API testing with Postman; BDD and Gherkin</li><li>Azure DevOps (Boards, Test Plans, Wiki) and Jira; a test repository organized by user journey</li><li>Release coordination with the team, UAT, screen checks against Figma and Zeplin</li><li>AI in the QA workflow: test case drafts from test recordings, with checks, dry-run and human approval</li><li>Basic SQL and Python, Git and GitHub, DevTools</li></ul>
       <ul class="pt"><li>Teste funcional, exploratório, regressão, smoke e sanity em web, Android e iOS</li><li>Design de teste: partição de equivalência, valor limite, tabela de decisão</li><li>Teste de API com Postman; BDD e Gherkin</li><li>Azure DevOps (Boards, Test Plans, Wiki) e Jira; repositório de casos organizado por jornada</li><li>Coordenação de release com o time, UAT, validação de telas no Figma e no Zeplin</li><li>IA no fluxo de QA: rascunhos de casos a partir das gravações dos testes, com checagens, dry-run e aprovação humana</li><li>SQL e Python básicos, Git e GitHub, DevTools</li></ul>
     </div>
-    <div class="box"><h3><span class="en">Studying</span><span class="pt">Estudando</span><span class="chip st"><span class="en">Study</span><span class="pt">Estudo</span></span></h3>
+    <div class="box rv"><h3><span class="en">Studying</span><span class="pt">Estudando</span><span class="tag st"><svg class="ic"><use href="#i-book"/></svg><span class="en">Study</span><span class="pt">Estudo</span></span></h3>
       <ul class="en"><li><b>Playwright</b>: main focus for test automation</li><li><b>ISTQB CTFL v4.0</b>: exam planned for 2027, then CTFL-AI</li><li><b>Cypress</b>: secondary study (Desafio-dti project)</li><li><b>Jest and Testing Library</b></li><li><b>LGPD</b> applied to test data and privacy testing</li></ul>
       <ul class="pt"><li><b>Playwright</b>: foco principal em automação de testes</li><li><b>ISTQB CTFL v4.0</b>: prova prevista para 2027, depois a CTFL-AI</li><li><b>Cypress</b>: estudo secundário (projeto Desafio-dti)</li><li><b>Jest e Testing Library</b></li><li><b>LGPD</b> aplicada à massa de teste e a testes de privacidade</li></ul>
     </div>
   </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-  <h2><span class="en">Projects</span><span class="pt">Projetos</span></h2>
-  <p class="lede"><span class="en">Public repositories of mine. Hands-on testing of a demo app is next.</span><span class="pt">Repositórios públicos meus. O próximo é um teste prático num app de demonstração.</span></p>
+<section class="band" style="background:var(--i50)"><div class="wrap">
+  <div class="rv"><p class="eyebrow"><span class="en">Coming next</span><span class="pt">Próximos capítulos</span></p>
+  <h2><span class="en">This portfolio is growing</span><span class="pt">Este portfólio está crescendo</span></h2>
+  <p class="lede"><span class="en">Hands-on testing of a demo app, documented end to end.</span><span class="pt">Teste prático de um app de demonstração, documentado de ponta a ponta.</span></p></div>
+  <div class="next">
+    <div class="rv"><span class="soon"><span class="en">Planned</span><span class="pt">Planejado</span></span><b class="en">Manual testing</b><b class="pt">Testes manuais</b><p class="en">Cases, bugs and a summary report on a public demo app, using the templates above.</p><p class="pt">Casos, bugs e relatório de resumo num app público de demonstração, usando os templates acima.</p></div>
+    <div class="rv"><span class="soon"><span class="en">Planned</span><span class="pt">Planejado</span></span><b class="en">AI-assisted execution</b><b class="pt">Execução assistida por IA</b><p class="en">Agents running manual test scripts and recording evidence, under human review.</p><p class="pt">Agentes executando roteiros de teste e gravando evidências, com revisão humana.</p></div>
+    <div class="rv"><span class="soon"><span class="en">Planned</span><span class="pt">Planejado</span></span><b class="en">Playwright in CI</b><b class="pt">Playwright em CI</b><p class="en">Automated tests on every push, with a published report.</p><p class="pt">Testes automatizados a cada push, com relatório publicado.</p></div>
+  </div>
   <div class="proj">
-    <a href="https://github.com/M-Gatti/Desafio-dti"><b>Desafio-dti</b><p class="en">Authentication and sign-up flows automated with Cypress and BDD.</p><p class="pt">Fluxos de autenticação e cadastro automatizados com Cypress e BDD.</p><span class="chip st"><span class="en">Study reference</span><span class="pt">Referência de estudo</span></span></a>
-    <a href="https://github.com/M-Gatti/teleprompter"><b>teleprompter</b><p class="en">A small PWA I built for my own use, published on GitHub Pages.</p><p class="pt">Um PWA pequeno que fiz para uso próprio, publicado no GitHub Pages.</p><span class="chip st" style="border-style:dotted"><span class="en">Personal project</span><span class="pt">Projeto pessoal</span></span></a>
+    <a class="card tilt rv" href="https://github.com/M-Gatti/Desafio-dti" target="_blank" rel="noopener"><span class="glare"></span><b>Desafio-dti</b><span class="d en">Authentication and sign-up flows automated with Cypress and BDD.</span><span class="d pt">Fluxos de autenticação e cadastro automatizados com Cypress e BDD.</span><span class="tag st" style="align-self:flex-start"><svg class="ic"><use href="#i-book"/></svg><span class="en">Study reference</span><span class="pt">Referência de estudo</span></span></a>
+    <a class="card tilt rv" href="https://github.com/M-Gatti/teleprompter" target="_blank" rel="noopener"><span class="glare"></span><b>teleprompter</b><span class="d en">A small PWA I built for my own use, published on GitHub Pages.</span><span class="d pt">Um PWA pequeno que fiz para uso próprio, publicado no GitHub Pages.</span><span class="soon" style="align-self:flex-start"><span class="en">Personal project</span><span class="pt">Projeto pessoal</span></span></a>
   </div>
 </div></section>
 </main>
 
 <main id="doc-view" hidden>
   <div class="wrap reader">
-    <nav class="toc" id="toc" aria-label="Documents"></nav>
+    <aside class="toc" id="toc" aria-label="Documents"></aside>
     <div>
-      <details class="tocm"><summary><span class="en">All documents</span><span class="pt">Todos os documentos</span></summary><div id="tocm"></div></details>
-      <div class="crumb"><span id="crumb"></span><a id="gh" href="#"><span class="en">View on GitHub</span><span class="pt">Ver no GitHub</span></a></div>
+      <details class="tocm" id="tocm-wrap"><summary><span class="en">All documents</span><span class="pt">Todos os documentos</span></summary><div id="tocm"></div></details>
+      <div class="dochead"><span class="where" id="where"></span><a class="src" id="src" href="#" target="_blank" rel="noopener"><svg class="ic"><use href="#i-file"/></svg><span class="en">Source file</span><span class="pt">Arquivo fonte</span></a></div>
       <article id="doc"></article>
-      <div class="pager" id="pager"></div>
+      <div class="docfoot" id="docfoot"></div>
     </div>
   </div>
 </main>
 </div>
 
-<footer id="contact"><div class="wrap">
+<footer id="contact" class="fade"><div class="wrap">
   <div>
     <h2><span class="en">Let's talk</span><span class="pt">Vamos conversar</span></h2>
     <p><span class="en">Open to remote QA work: contract (PJ), part-time or freelance.</span><span class="pt">Aberto a trabalho remoto de QA: PJ, meio período ou freelance.</span></p>
-    <p><a href="https://linkedin.com/in/gattisj">linkedin.com/in/gattisj</a> · <a href="https://github.com/M-Gatti">github.com/M-Gatti</a></p>
+    <p><a href="https://linkedin.com/in/gattisj" target="_blank" rel="noopener">linkedin.com/in/gattisj</a> · <a href="https://github.com/M-Gatti" target="_blank" rel="noopener">github.com/M-Gatti</a></p>
     <p>gattimarcussj@gmail.com</p>
   </div>
   <div>
@@ -269,15 +376,27 @@ article tr:last-child td{border-bottom:0}
   </div>
 </div></footer>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Diagram"><div class="lbin">
+  <div class="lbbar"><b><span class="en">Diagram</span><span class="pt">Diagrama</span></b>
+    <button type="button" id="z-out" aria-label="Zoom out">−</button><button type="button" id="z-reset">100%</button><button type="button" id="z-in" aria-label="Zoom in">+</button><button type="button" id="lb-close"><span class="en">Close</span><span class="pt">Fechar</span></button></div>
+  <div class="lbview" id="lbview"></div>
+</div></div>
+
+<div class="mp" id="mp"><span><span class="en">Preview · motion:</span><span class="pt">Prévia · animação:</span></span>
+  <button type="button" data-motion="moderate" aria-pressed="true"><span class="en">Moderate</span><span class="pt">Moderada</span></button>
+  <button type="button" data-motion="rich" aria-pressed="false"><span class="en">Rich</span><span class="pt">Bastante</span></button>
+</div>
+
 <noscript><p class="wrap">This site needs JavaScript to show the documents. They are all on <a href="https://github.com/M-Gatti/qa-portfolio">GitHub</a>.</p></noscript>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
 <script>
 {
+document.documentElement.classList.add('js');
 const GH='https://github.com/M-Gatti/qa-portfolio/blob/main/';
-const SEC={tpl:{en:'Templates',pt:'Templates'},tec:{en:'Test design techniques',pt:'Técnicas de design de teste'},flw:{en:'QA flows',pt:'Fluxos de QA'},cs:{en:'Case study',pt:'Estudo de caso'}};
-const LAB={ap:{en:'Applied in practice',pt:'Aplicado na prática'},st:{en:'Study reference',pt:'Referência de estudo'},mx:{en:'Practice + study',pt:'Prática + estudo'}};
+const SEC={cs:{en:'Case study',pt:'Estudo de caso',ic:'i-case'},tec:{en:'Test design techniques',pt:'Técnicas de design de teste',ic:'i-grid'},flw:{en:'QA flows',pt:'Fluxos de QA',ic:'i-flow'},tpl:{en:'Templates',pt:'Templates',ic:'i-file'}};
+const LAB={ap:{en:'Applied in practice',pt:'Aplicado na prática',ic:'i-check'},st:{en:'Study reference',pt:'Referência de estudo',ic:'i-book'},mx:{en:'Practice + study',pt:'Prática + estudo',ic:'i-check'}};
 const D=(id,s,l,en,pt,te,tp,de,dp)=>({id,s,l,en,pt,t:{en:te,pt:tp},d:{en:de,pt:dp}});
 const DOCS=[
  D('case-study','cs','ap','case-study/en/test-repository-and-ai-workflow.md','case-study/pt-br/repositorio-de-casos-e-fluxo-com-ia.md','Test repository by journey, with an AI-assisted workflow','Repositório de casos por jornada, com fluxo assistido por IA','Fictional scenario, real techniques and decisions','Cenário fictício, técnicas e decisões reais'),
@@ -300,94 +419,141 @@ const DOCS=[
  D('improvement','tpl','st','templates/en/improvement.md','templates/pt-br/melhoria.md','Improvement','Melhoria','When it is not a bug but hurts the user','Quando não é bug, mas atrapalha'),
  D('privacy','tpl','st','templates/en/test-data-privacy-checklist.md','templates/pt-br/massa-de-teste-e-privacidade.md','Test data and privacy (LGPD)','Massa de teste e privacidade (LGPD)','Handling data while testing, and what to test','Como tratar dados ao testar, e o que testar')
 ];
-const ORDER=['cs','tec','flw','tpl'];
 const TECH=[['ap','Equivalence partitioning','Partição de equivalência','4.2.1','1-equivalence-partitioning','1-partição-de-equivalência'],['ap','Boundary value analysis','Análise de valor limite','4.2.2','2-boundary-value-analysis','2-análise-de-valor-limite'],['ap','Decision table testing','Tabela de decisão','4.2.3','3-decision-table-testing','3-tabela-de-decisão'],['st','State transition testing','Transição de estado','4.2.4','4-state-transition-testing','4-transição-de-estado'],['st','Error guessing','Suposição de erro','4.4.1','5-error-guessing','5-suposição-de-erro-error-guessing'],['ap','Exploratory testing','Teste exploratório','4.4.2','6-exploratory-testing','6-teste-exploratório']];
+const ORDER=['cs','tec','flw','tpl'];
 const byPath={};DOCS.forEach(d=>{byPath[d.en]={d,lang:'en'};byPath[d.pt]={d,lang:'pt'}});
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const chip=(l,lang)=>`<span class="chip ${l}">${LAB[l][lang]}</span>`;
-let lang='en',cur=null,pendingAnchor=null;
+const ic=n=>`<svg class="ic"><use href="#${n}"/></svg>`;
+let lang='en',cur=null,pendingAnchor=null,homeY=0,fType='all',fLab='all';
+const T=(en,pt)=>lang==='pt'?pt:en;
+const tag=l=>`<span class="tag ${l}">${ic(LAB[l].ic)}${LAB[l][lang]}</span>`;
 const cache={};
 const slug=s=>s.trim().toLowerCase().replace(/[^\p{L}\p{N}\- _]/gu,'').replace(/ /g,'-');
-const dark=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches};
-try{const dk=dark();window.mermaid&&mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',flowchart:{curve:'basis',nodeSpacing:28,rankSpacing:34},themeVariables:{fontFamily:'Inter, sans-serif',fontSize:'14px',primaryColor:dk?'#111733':'#eef2ff',primaryBorderColor:dk?'#7b95ff':'#1240e0',primaryTextColor:dk?'#e8ebf5':'#0d0f14',lineColor:dk?'#9aa3bd':'#596075',secondaryColor:dk?'#0f1428':'#ffffff',tertiaryColor:dk?'#0f1428':'#ffffff',edgeLabelBackground:dk?'#0a0d18':'#ffffff',background:dk?'#0f1428':'#ffffff'}})}catch(e){}
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rich=()=>document.documentElement.dataset.motion==='rich'&&!reduce;
+try{window.mermaid&&mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',flowchart:{curve:'basis',nodeSpacing:30,rankSpacing:38},themeVariables:{fontFamily:'Inter, sans-serif',fontSize:'15px',primaryColor:'#eef0ff',primaryBorderColor:'#4f46e5',primaryTextColor:'#1b1840',lineColor:'#5b5880',secondaryColor:'#ffffff',tertiaryColor:'#ffffff',edgeLabelBackground:'#ffffff',background:'#ffffff'}})}catch(e){}
 
+const STATS=[[DOCS.length,'documents','documentos'],[DOCS.filter(d=>d.s==='tpl').length,'templates','templates'],[TECH.length,'test design techniques','técnicas de design de teste'],[2,'languages, every document','idiomas, em todo documento']];
+const renderStats=()=>{$('stats').innerHTML=STATS.map(s=>`<div class="stat"><b data-n="${s[0]}">${s[0]}</b><span>${T(s[1],s[2])}</span></div>`).join('')};
+const countUp=el=>{const b=el.querySelector('b');const n=+b.dataset.n;if(!rich()){b.textContent=n;return}let t0=null;const step=t=>{if(t0===null)t0=t;const p=Math.min(1,(t-t0)/1000);b.textContent=Math.round(n*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)};b.textContent='0';requestAnimationFrame(step)};
+
+const items=()=>{const out=[];DOCS.forEach(d=>{if(d.id==='techniques')TECH.forEach(t=>out.push({id:'techniques',anchor:{en:t[4],pt:t[5]},s:'tec',l:t[0],t:{en:t[1],pt:t[2]},d:{en:'CTFL v4.0 · '+t[3],pt:'CTFL v4.0 · '+t[3]}}));else out.push(d)});return out};
+const renderFilters=()=>{
+  const types=[['all','All','Todos'],['tpl','Templates','Templates'],['tec','Techniques','Técnicas'],['flw','Flows','Fluxos'],['cs','Case study','Estudo de caso']];
+  const labs=[['all','Any','Qualquer'],['ap','Applied in practice','Aplicado na prática'],['st','Study reference','Referência de estudo']];
+  $('f-type').innerHTML=`<span>${T('Type','Tipo')}</span>`+types.map(t=>`<button type="button" class="fbtn" data-ft="${t[0]}" aria-pressed="${fType===t[0]}">${T(t[1],t[2])}</button>`).join('');
+  $('f-lab').innerHTML=`<span>${T('Label','Selo')}</span>`+labs.map(t=>`<button type="button" class="fbtn" data-fl="${t[0]}" aria-pressed="${fLab===t[0]}">${T(t[1],t[2])}</button>`).join('');
+};
 const renderLib=()=>{
-  $('lib').innerHTML=ORDER.filter(s=>s!=='cs').map(s=>{const ds=DOCS.filter(d=>d.s===s);
-    if(s==='tec')return `<div class="libsec"><h3>${SEC[s][lang]}<small>CTFL v4.0 · ${TECH.length}</small></h3><div class="lib">${TECH.map(t=>`<a href="#techniques" data-anchor="${lang==='pt'?t[5]:t[4]}"><b>${lang==='pt'?t[2]:t[1]}</b><span class="d">CTFL ${t[3]}</span>${chip(t[0],lang)}</a>`).join('')}</div></div>`;
-    return `<div class="libsec"><h3>${SEC[s][lang]}<small>${ds.length}</small></h3><div class="lib">${ds.map(d=>`<a href="#${d.id}"><b>${esc(d.t[lang])}</b><span class="d">${esc(d.d[lang])}</span>${chip(d.l,lang)}</a>`).join('')}</div></div>`}).join('');
-  const toc=ORDER.map(s=>`<p>${SEC[s][lang]}</p>`+DOCS.filter(d=>d.s===s).map(d=>`<a href="#${d.id}"${cur&&cur.id===d.id?' aria-current="page"':''}>${esc(d.t[lang])}</a>`).join('')).join('');
-  $('toc').innerHTML=toc;$('tocm').innerHTML=toc;
+  const list=items().filter(i=>(fType==='all'||i.s===fType)&&(fLab==='all'||i.l===fLab||i.l==='mx'));
+  $('lib').innerHTML=list.length?list.map(i=>`<a class="card tilt" href="#${i.id}"${i.anchor?` data-anchor="${esc(i.anchor[lang])}"`:''}><span class="glare"></span><b>${esc(i.t[lang])}</b><span class="d">${esc(i.d[lang])}</span><span class="meta"><span class="sec">${SEC[i.s][lang]}</span>${tag(i.l)}</span></a>`).join(''):`<div class="empty">${T('Nothing with these filters.','Nada com esses filtros.')}</div>`;
+  bindTilt($('lib'));
+};
+const renderToc=()=>{
+  const g=ORDER.map(s=>{const ds=DOCS.filter(d=>d.s===s);const open=!cur||cur.s===s;
+    return `<details class="grp"${open?' open':''}><summary>${ic(SEC[s].ic)}<span>${SEC[s][lang]}</span><span class="n">${ds.length}</span>${ic('i-right')}</summary><div class="items">${ds.map(d=>`<a href="#${d.id}"${cur&&cur.id===d.id?' aria-current="page"':''}><i class="${d.l}"></i>${esc(d.t[lang])}</a>`).join('')}</div></details>`}).join('');
+  $('toc').innerHTML=`<button class="backlink" type="button" data-go="library">${ic('i-left')}${T('Back to the library','Voltar à biblioteca')}</button>`+g;
+  $('tocm').innerHTML=g;
 };
 
 const linkFix=(root,base)=>{
   root.querySelectorAll('a[href]').forEach(a=>{
     const h=a.getAttribute('href');
     if(/^https?:/i.test(h)){a.target='_blank';a.rel='noopener';return}
-    if(h.startsWith('#')){const id=decodeURIComponent(h.slice(1));a.addEventListener('click',e=>{e.preventDefault();const t=document.getElementById('h-'+id);t&&t.scrollIntoView({behavior:'smooth'})});return}
+    if(h.startsWith('#')){a.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const t=$('h-'+decodeURIComponent(h.slice(1)));t&&t.scrollIntoView({behavior:reduce?'auto':'smooth'})});return}
     const [p,anc]=h.split('#');
     const full=new URL(p,'https://x/'+base).pathname.slice(1);
     const hit=byPath[decodeURIComponent(full)];
-    if(hit){a.href='#'+hit.d.id;a.addEventListener('click',e=>{e.preventDefault();pendingAnchor=anc?decodeURIComponent(anc):null;if(hit.lang!==lang)setLang(hit.lang,true);go(hit.d.id)})}
+    if(hit){a.href='#'+hit.d.id;a.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();pendingAnchor=anc?decodeURIComponent(anc):null;if(hit.lang!==lang)setLang(hit.lang,true);go(hit.d.id)})}
     else{a.href=GH+full;a.target='_blank';a.rel='noopener'}
   });
 };
-
 const showDoc=async d=>{
   const path=d[lang];
-  $('crumb').textContent=SEC[d.s][lang];
-  $('gh').href=GH+path;
+  $('where').innerHTML=`${ic(SEC[d.s].ic)}<span>${SEC[d.s][lang]}</span>${tag(d.l)}`;
+  $('src').href=GH+path;
   const art=$('doc');
   try{
     if(!cache[path]){const r=await fetch(path);if(!r.ok)throw new Error(r.status);cache[path]=await r.text()}
     let html=window.marked?marked.parse(cache[path],{gfm:true}):'<pre>'+esc(cache[path])+'</pre>';
     if(window.DOMPurify)html=DOMPurify.sanitize(html);
     art.innerHTML=html;
-  }catch(e){art.innerHTML=`<div class="msg">${lang==='pt'?'Não consegui carregar este documento aqui.':'Could not load this document here.'} <a href="${GH+path}">${lang==='pt'?'Abrir no GitHub':'Open on GitHub'}</a></div>`;return}
+  }catch(e){art.innerHTML=`<div class="msg">${T('Could not load this document here.','Não consegui carregar este documento aqui.')} <a href="${GH+path}">${T('Open on GitHub','Abrir no GitHub')}</a></div>`;return}
   art.querySelectorAll('h1,h2,h3,h4').forEach(h=>h.id='h-'+slug(h.textContent));
   art.querySelectorAll('table').forEach(t=>{const w=document.createElement('div');w.className='tbl';t.parentNode.insertBefore(w,t);w.appendChild(t)});
   art.querySelectorAll('p').forEach(p=>{const t=p.textContent.trim();if(t.startsWith('✅'))p.classList.add('lab','ap');else if(t.startsWith('📚'))p.classList.add('lab','st')});
   linkFix(art,path);
-  const ms=[...art.querySelectorAll('pre code.language-mermaid')].map(c=>{const div=document.createElement('div');div.className='mermaid';div.textContent=c.textContent;c.parentNode.replaceWith(div);return div});
+  const ms=[...art.querySelectorAll('pre code.language-mermaid')].map(c=>{const wrap=document.createElement('div');wrap.className='dgm';const div=document.createElement('div');div.className='mermaid';div.textContent=c.textContent;
+    const b=document.createElement('button');b.type='button';b.className='expand';b.innerHTML=ic('i-expand')+T('Expand','Ampliar');b.addEventListener('click',()=>openLb(div));
+    wrap.append(b,div);c.parentNode.replaceWith(wrap);return div});
   if(ms.length&&window.mermaid){try{await mermaid.run({nodes:ms})}catch(e){}}
-  const i=DOCS.indexOf(d),pv=DOCS[i-1],nx=DOCS[i+1];
-  $('pager').innerHTML=(pv?`<a href="#${pv.id}"><small>${lang==='pt'?'Anterior':'Previous'}</small>${esc(pv.t[lang])}</a>`:'')+(nx?`<a class="nx" href="#${nx.id}"><small>${lang==='pt'?'Próximo':'Next'}</small>${esc(nx.t[lang])}</a>`:'');
+  const i=DOCS.indexOf(d),nx=DOCS[i+1];
+  $('docfoot').innerHTML=`<button type="button" data-go="library">${ic('i-left')}${T('Back to the library','Voltar à biblioteca')}</button>`+(nx?`<a class="nx" href="#${nx.id}">${T('Next','Próximo')}: ${esc(nx.t[lang])}${ic('i-arrow')}</a>`:'');
   if(pendingAnchor){const t=$('h-'+pendingAnchor);pendingAnchor=null;t&&t.scrollIntoView()}
 };
 
-document.addEventListener('click',e=>{const a=e.target.closest('a[data-anchor]');if(a){pendingAnchor=a.dataset.anchor}});
-const go=id=>{if(location.hash!=='#'+id)location.hash=id;else route()};
-const route=async()=>{
+let zoom=1;
+let vbW=0,vbH=0;
+const setZoom=z=>{zoom=Math.min(3,Math.max(.4,z));const s=$('lbview').querySelector('svg');if(s&&vbW){s.style.width=Math.round(vbW*zoom)+'px';s.style.height=Math.round(vbH*zoom)+'px'}$('z-reset').textContent=Math.round(zoom*100)+'%'};
+const openLb=div=>{const s=div.querySelector('svg');if(!s)return;const c=s.cloneNode(true);c.removeAttribute('style');const vb=(c.getAttribute('viewBox')||'').split(/[\s,]+/).map(Number);if(vb.length===4){vbW=vb[2];vbH=vb[3];c.removeAttribute('width');c.removeAttribute('height')}else{vbW=0}
+  $('lbview').innerHTML='';$('lbview').appendChild(c);$('lb').classList.add('on');
+  const fit=vb.length===4?Math.min(1.8,Math.max(.5,Math.min(($('lbview').clientWidth-40)/vb[2],($('lbview').clientHeight-40)/vb[3]))):1;setZoom(fit);$('lb-close').focus()};
+const closeLb=()=>$('lb').classList.remove('on');
+$('z-in').addEventListener('click',()=>setZoom(zoom+.2));$('z-out').addEventListener('click',()=>setZoom(zoom-.2));$('z-reset').addEventListener('click',()=>setZoom(1));
+$('lb-close').addEventListener('click',closeLb);$('lb').addEventListener('click',e=>{if(e.target.id==='lb')closeLb()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.1}):null;
+const observe=()=>document.querySelectorAll('.rv:not(.in)').forEach(el=>io?io.observe(el):el.classList.add('in'));
+const statsIo='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){statsIo.unobserve(en.target);en.target.querySelectorAll('.stat').forEach(countUp)}}),{threshold:.4}):null;
+const bindTilt=root=>root.querySelectorAll('.tilt').forEach(c=>{if(c.dataset.t)return;c.dataset.t='1';
+  c.addEventListener('pointermove',e=>{if(!rich()||e.pointerType!=='mouse')return;const r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.transform=`perspective(800px) rotateX(${(.5-y)*8}deg) rotateY(${(x-.5)*8}deg) translateY(-3px)`;c.style.setProperty('--gx',x*100+'%');c.style.setProperty('--gy',y*100+'%')});
+  c.addEventListener('pointerleave',()=>{c.style.transform=''})});
+const sheets=$('sheets');
+$('top').addEventListener('pointermove',e=>{if(!rich())return;const r=sheets.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;sheets.style.transform=`perspective(900px) rotateY(${x*7}deg) rotateX(${-y*6}deg)`});
+$('top').addEventListener('pointerleave',()=>{sheets.style.transform=''});
+const setMotion=m=>{document.documentElement.dataset.motion=m;document.querySelectorAll('#mp button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.motion===m));document.querySelectorAll('.stat').forEach(countUp);try{localStorage.setItem('qa-motion',m)}catch(e){}};
+document.querySelectorAll('#mp button').forEach(b=>b.addEventListener('click',()=>setMotion(b.dataset.motion)));
+
+const scrollToId=id=>{const t=$(id);if(t)t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})};
+const goSection=id=>{if(cur){history.pushState(null,'',location.pathname+location.search);route(id)}else if(id==='top')window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});else scrollToId(id)};
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]');if(g){e.preventDefault();goSection(g.dataset.go);return}
+  const ft=e.target.closest('[data-ft]');if(ft){fType=ft.dataset.ft;renderFilters();renderLib();return}
+  const fl=e.target.closest('[data-fl]');if(fl){fLab=fl.dataset.fl;renderFilters();renderLib();return}
+  const a=e.target.closest('a[href^="#"]');if(a){pendingAnchor=a.dataset.anchor||null;if(!cur)homeY=scrollY}
+});
+const go=id=>{if(!cur)homeY=scrollY;if(location.hash!=='#'+id)location.hash=id;else route()};
+const route=async target=>{
   const h=decodeURIComponent(location.hash.slice(1));
   const d=DOCS.find(x=>x.id===h);
-  document.querySelectorAll('.nav a[data-nav]').forEach(a=>a.removeAttribute('aria-current'));
-  if(d){cur=d;$('home-view').hidden=true;$('doc-view').hidden=false;renderLib();const hadA=!!pendingAnchor;if(!hadA)window.scrollTo(0,0);await showDoc(d);
-    const n=document.querySelector(`.nav a[data-nav="${d.id}"]`);n&&n.setAttribute('aria-current','page');}
-  else{cur=null;$('doc-view').hidden=true;$('home-view').hidden=false;renderLib();
-    if(h==='home-library'){const t=$('home-library');t&&t.scrollIntoView()}else window.scrollTo(0,0);
-    const n=document.querySelector('.nav a[data-nav="home"]');n&&n.setAttribute('aria-current','page');}
+  if(d){cur=d;$('home-view').hidden=true;$('doc-view').hidden=false;renderToc();$('tocm-wrap').open=false;if(!pendingAnchor)window.scrollTo(0,0);await showDoc(d)}
+  else{const wasDoc=!!cur;cur=null;$('doc-view').hidden=true;$('home-view').hidden=false;observe();
+    if(typeof target==='string'){if(target==='top')window.scrollTo(0,0);else{const t=$(target);t&&t.scrollIntoView({block:'start'})}}
+    else if(wasDoc)window.scrollTo(0,homeY)}
 };
-
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const setLang=(l,quiet)=>{
   if(l===lang&&!quiet)return;
   const apply=async()=>{
     lang=l;const r=document.documentElement;r.dataset.lang=l;r.lang=l==='pt'?'pt-BR':'en';
     $('b-en').setAttribute('aria-pressed',l==='en');$('b-pt').setAttribute('aria-pressed',l==='pt');
     try{localStorage.setItem('qa-lang',l)}catch(e){}
-    renderLib();if(cur&&!quiet)await showDoc(cur);
+    renderStats();renderFilters();renderLib();renderToc();if(cur&&!quiet)await showDoc(cur);
   };
   if(quiet||reduce){apply();return}
   const els=document.querySelectorAll('#stage,footer,.nav,.brand small');els.forEach(e=>e.classList.add('swap'));
-  setTimeout(async()=>{await apply();requestAnimationFrame(()=>els.forEach(e=>e.classList.remove('swap')))},200);
+  setTimeout(async()=>{await apply();requestAnimationFrame(()=>els.forEach(e=>e.classList.remove('swap')))},220);
 };
 
-let start='en';
-try{start=localStorage.getItem('qa-lang')||''}catch(e){}
+let start='',mot='moderate';
+try{start=localStorage.getItem('qa-lang')||'';mot=localStorage.getItem('qa-motion')||'moderate'}catch(e){}
 if(!start)start=(navigator.language||'').toLowerCase().startsWith('pt')?'pt':'en';
 document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.set)));
-setLang(start,true);
-addEventListener('hashchange',route);
+document.documentElement.dataset.motion=mot;document.querySelectorAll('#mp button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.motion===mot));
+setLang(start,true);bindTilt(document);
+if(statsIo)statsIo.observe($('stats'));
+addEventListener('hashchange',()=>route());
 route();
 }
 </script>

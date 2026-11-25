@@ -42,7 +42,7 @@ Os casos de teste ficavam em **um plano de teste por sprint**. Depois de nove sp
 Depois da reorganização, o próximo gargalo era **escrever os casos** depois de testar cada história. O fluxo abaixo transforma a minha sessão de teste em rascunhos de casos revisados.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Sessão de teste manual gravada] --> B[Agente rascunha casos a partir da gravação e da história]
     B --> C[Checagens automáticas: regras de escrita, duplicados, campos obrigatórios]
     C --> D[Dry-run: o que seria publicado]

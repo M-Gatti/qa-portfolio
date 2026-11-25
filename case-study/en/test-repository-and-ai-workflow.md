@@ -42,7 +42,7 @@ Test cases lived in **one test plan per sprint**. After nine sprints that meant:
 After the reorganization, the next bottleneck was **writing cases** after each story was tested. The workflow below turns my test session into reviewed case drafts.
 
 ```mermaid
-flowchart LR
+flowchart TD
     A[Manual test session, screen recorded] --> B[Agent drafts cases from the recording and the story]
     B --> C[Automatic checks: writing rules, duplicates, required fields]
     C --> D[Dry-run: what would be published]
