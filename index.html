@@ -6,6 +6,10 @@
 <title>Marcus Gatti QA Portfolio</title>
 <meta name="description" content="Marcus Gatti, QA Engineer (web and mobile). Templates, test design techniques, QA flows and a case study. All examples fictional.">
 <meta name="color-scheme" content="light">
+<meta name="theme-color" content="#f3f0ff">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -19,7 +23,11 @@
 :root{color-scheme:light;--bg:#f3f0ff;--surf:#ffffff;--ink:#1e1838;--mute:#5d5875;--line:#e7e3f3;--p50:#f3f0ff;--p100:#e6e0ff;--p200:#d6ccff;--p600:#6d4ae8;--p700:#5835d4;--p900:#2e1f73;--t700:#0f766e;--t50:#e6f6f3;--a800:#92400e;--a50:#fdf3e1;--code:#f6f4fc;--sans:"IBM Plex Sans",system-ui,sans-serif;--disp:Archivo,"IBM Plex Sans",sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,monospace;--sheet:0 -1px 0 var(--line),0 -18px 40px -24px rgba(46,31,115,.28)}
 *{box-sizing:border-box;min-width:0}
 [hidden]{display:none!important}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
+html{scroll-behavior:smooth;scroll-padding-top:80px;scrollbar-width:thin;scrollbar-color:var(--p200) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--p200);border-radius:10px;border:3px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-thumb:hover{background:var(--p600);background-clip:padding-box;border:3px solid transparent}
 body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.65 var(--sans);overflow-x:clip}
 a{color:var(--p700);text-underline-offset:3px}
 button{font:inherit}
@@ -36,7 +44,8 @@ svg.ic{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-wid
 /* header */
 header{position:sticky;top:0;z-index:20;background:rgba(243,240,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--p100)}
 header .wrap{display:flex;align-items:center;gap:6px 18px;min-height:66px;flex-wrap:wrap;max-width:1240px}
-.brand{font:800 18px var(--disp);letter-spacing:-.02em;color:var(--ink);background:none;border:0;cursor:pointer;padding:6px 0;margin-right:auto}
+.brand{font:800 15px/1 var(--disp);letter-spacing:-.03em;color:#fff;background:var(--p600);border:0;cursor:pointer;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-right:auto;transition:transform .2s,background .2s}
+.brand:hover{background:var(--p700);transform:rotate(-4deg)}
 .nav{display:flex;gap:2px;flex-wrap:wrap}
 .nav button{color:var(--mute);background:none;border:0;padding:9px 11px;border-radius:8px;cursor:pointer;font:500 15px var(--sans);transition:color .15s,background .15s}
 .nav button:hover,.nav button.on{color:var(--ink);background:rgba(255,255,255,.7)}
@@ -88,7 +97,8 @@ header .wrap{display:flex;align-items:center;gap:6px 18px;min-height:66px;flex-w
 .big .row{padding:24px 16px}
 .big .row .t{font-size:22px}
 /* filters */
-.track{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px;margin-bottom:4px;scrollbar-width:thin}
+.track{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 10px;margin-bottom:4px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
 .chip{scroll-snap-align:start;flex:none;font:500 14px var(--sans);color:var(--mute);background:var(--surf);border:1px solid var(--line);border-radius:999px;padding:0 15px;min-height:38px;cursor:pointer;transition:all .2s}
 .chip:hover{color:var(--ink);border-color:var(--p600)}
 .chip[aria-pressed=true]{background:var(--p700);border-color:var(--p700);color:#fff}
@@ -211,7 +221,7 @@ article tr:last-child td{border-bottom:0}
 <div class="spot" id="spot" aria-hidden="true"></div>
 
 <header><div class="wrap">
-  <button class="brand" type="button" data-go="top">Marcus Gatti</button>
+  <button class="brand" type="button" data-go="top" aria-label="Marcus Gatti, home">MG</button>
   <nav class="nav fade" aria-label="Main">
     <button type="button" data-go="start"><span class="en">Start here</span><span class="pt">Comece aqui</span></button>
     <button type="button" data-go="library"><span class="en">Library</span><span class="pt">Biblioteca</span></button>
@@ -407,11 +417,11 @@ const renderFilters=()=>{
   const all=items();
   const types=[['all','All','Todos'],['tpl','Templates','Templates'],['tec','Techniques','Técnicas'],['flw','Flows','Fluxos'],['cs','Case study','Estudo de caso']];
   $('f-type').innerHTML=types.map(t=>{const n=t[0]==='all'?all.length:all.filter(i=>i.s===t[0]).length;return `<button type="button" class="chip" data-ft="${t[0]}" aria-pressed="${fType===t[0]}">${T(t[1],t[2])}<small>${n}</small></button>`}).join('');
-  const labs=[['all','Any','Qualquer'],['ap','Applied in practice','Aplicado na prática'],['st','Study reference','Referência de estudo']];
+  const labs=[['all','Any','Qualquer'],['ap','Applied in practice','Aplicado na prática'],['st','Study reference','Referência de estudo'],['mx','Practice + study','Prática + estudo']];
   $('f-lab').innerHTML=labs.map(t=>`<option value="${t[0]}"${fLab===t[0]?' selected':''}>${T(t[1],t[2])}</option>`).join('');
 };
 const renderLib=()=>{
-  const list=items().filter(i=>(fType==='all'||i.s===fType)&&(fLab==='all'||i.l===fLab||i.l==='mx'));
+  const list=items().filter(i=>(fType==='all'||i.s===fType)&&(fLab==='all'||i.l===fLab));
   $('lib').innerHTML=list.length?list.map(row).join(''):`<div class="empty">${T('Nothing with these filters.','Nada com esses filtros.')}</div>`;
   $('count').textContent=list.length+' '+T(list.length===1?'item':'items',list.length===1?'item':'itens');
 };
@@ -466,8 +476,9 @@ $('z-in').addEventListener('click',()=>setZoom(zoom+.2));$('z-out').addEventList
 $('lb-close').addEventListener('click',closeLb);$('lb').addEventListener('click',e=>{if(e.target.id==='lb')closeLb()});
 
 /* motion */
-const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.06}):null;
-const observe=()=>document.querySelectorAll('.rv:not(.in),.sheet.rs:not(.in)').forEach(el=>io?io.observe(el):el.classList.add('in'));
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(en=>{en.target.classList.toggle('in',en.isIntersecting)}),{threshold:.06,rootMargin:'0px 0px -4% 0px'}):null;
+const seen=new WeakSet();
+const observe=()=>document.querySelectorAll('.rv,.sheet.rs').forEach(el=>{if(!io){el.classList.add('in');return}if(!seen.has(el)){seen.add(el);io.observe(el)}});
 const spot=$('spot');
 addEventListener('pointermove',e=>{if(reduce||e.pointerType!=='mouse')return;spot.style.setProperty('--mx',e.clientX+'px');spot.style.setProperty('--my',e.clientY+'px')});
 const spyIds=['start','library','skills','next','contact'];
