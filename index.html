@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Marcus Gatti QA Portfolio</title>
+<title>Marcus Gatti · QA Portfolio</title>
 <meta name="description" content="Marcus Gatti, QA Engineer (web and mobile). Templates, test design techniques, QA flows and a case study. All examples fictional.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#f3f0ff">
@@ -486,7 +486,7 @@ const spy='IntersectionObserver' in window?new IntersectionObserver(es=>{es.forE
 if(spy)spyIds.forEach(id=>spy.observe($(id)));
 
 /* routing without visible URLs: state lives in history, not in links */
-const openExt=k=>{const u=EXT[k]||k;const w=window.open(u,'_blank','noopener');if(!w)location.href=u};
+const openExt=k=>{const u=EXT[k]||k;const a=document.createElement('a');a.href=u;a.target='_blank';a.rel='noopener noreferrer';a.style.display='none';document.body.appendChild(a);a.click();a.remove()};
 const scrollToId=id=>{const t=$(id);if(t)t.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})};
 const toHome=(target,push)=>{if(push)history.pushState({v:'home'},'',location.pathname+location.search);cur=null;document.body.classList.remove('doc-mode');$('doc-view').hidden=true;observe();
   if(target==='top')window.scrollTo(0,0);else if(target){const t=$(target);t&&t.scrollIntoView({block:'start'})}else window.scrollTo(0,homeY)};
@@ -508,7 +508,7 @@ addEventListener('popstate',e=>{const s=e.state;if(s&&s.v==='doc')toDoc(s.id,s.a
 const setLang=(l,quiet)=>{
   if(l===lang&&!quiet)return;
   const apply=async()=>{
-    lang=l;const r=document.documentElement;r.dataset.lang=l;r.lang=l==='pt'?'pt-BR':'en';
+    lang=l;const r=document.documentElement;r.dataset.lang=l;r.lang=l==='pt'?'pt-BR':'en';document.title=l==='pt'?'Marcus Gatti · Portfólio de QA':'Marcus Gatti · QA Portfolio';
     document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.set===l));
     try{localStorage.setItem('qa-lang',l)}catch(e){}
     renderStart();renderFilters();renderLib();renderToc();if(cur&&!quiet)await showDoc(cur);
