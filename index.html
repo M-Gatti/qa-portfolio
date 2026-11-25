@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcus Gatti QA Portfolio</title>
+<meta name="description" content="Marcus Gatti, QA Engineer (web and mobile). Templates, test design techniques, QA flows and a case study. All examples fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a QA professional's portfolio, read by recruiters and QA leads; calm, exact, confident
+   IDEA a well-kept test documentation library: sheets of real QA paperwork you can open and read
+   PICTURE two QA sheets (a test case over a bug report) in the hero, drawn in HTML from portfolio content
+   COLOUR white / deep night ground, near-black ink, cobalt #1240e0 as the one working colour, pale #eef2ff zones
+   TYPE Space Grotesk for titles, Inter for reading
+   LAYOUT laptop: intro left, sheets right, library grid below; reading view = contents list left, document right. Phone: stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0a0d18);--ink:light-dark(#0d0f14,#e8ebf5);--mute:light-dark(#596075,#9aa3bd);--line:light-dark(#e2e6f0,#1f2644);--pale:light-dark(#eef2ff,#111733);--card:light-dark(#ffffff,#0f1428);--cob:light-dark(#1240e0,#7b95ff);--oncob:light-dark(#ffffff,#0a0d18);--code:light-dark(#f5f7fc,#0d1224)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:var(--cob);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--cob);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
+[data-lang=en] .pt,[data-lang=pt] .en{display:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(5vw,16px)}
+#stage,footer,.nav,.brand small{transition:opacity .2s ease,transform .2s ease}
+.swap{opacity:0!important}
+#stage.swap{transform:translateY(6px)}
+@media(prefers-reduced-motion:reduce){#stage,footer,.nav,.brand small{transition:none}.seg i{transition:none}.lib a,.btn{transition:none}}
+/* header */
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:12px 24px;min-height:64px;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;line-height:1.15;text-decoration:none;color:var(--ink);margin-right:auto}
+.brand b{font-family:"Space Grotesk",sans-serif;font-size:18px}
+.brand small{color:var(--mute);font-size:13px}
+.nav{display:flex;gap:4px 20px;flex-wrap:wrap}
+.nav a{color:var(--mute);text-decoration:none;font-weight:500;padding:10px 0}
+.nav a:hover,.nav a[aria-current=page]{color:var(--ink)}
+.seg{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--pale)}
+.seg i{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:999px;background:var(--cob);transition:transform .25s ease}
+[data-lang=pt] .seg i{transform:translateX(100%)}
+.seg button{position:relative;font:600 14px Inter,sans-serif;border:0;background:none;color:var(--ink);min-width:48px;min-height:38px;border-radius:999px;cursor:pointer;transition:color .25s}
+[data-lang=en] #b-en,[data-lang=pt] #b-pt{color:var(--oncob)}
+/* hero */
+.hero{background:var(--pale);border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,5vw,72px);align-items:center;padding-top:clamp(36px,6vw,80px);padding-bottom:clamp(36px,6vw,80px)}
+.hero h1{font-size:clamp(40px,5.6vw,60px);margin:0 0 10px}
+.role{font-family:"Space Grotesk",sans-serif;font-size:clamp(19px,2vw,22px);font-weight:500;color:var(--cob);margin:0 0 18px}
+.intro{font-size:17px;max-width:58ch;margin:0 0 24px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 20px;border-radius:10px;font-weight:600;text-decoration:none;border:1.5px solid var(--cob);transition:background .15s,color .15s}
+.btn.pri{background:var(--cob);color:var(--oncob)}
+.btn.sec{color:var(--cob);background:transparent}
+.btn.sec:hover{background:var(--card)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;font-size:14px;color:var(--mute)}
+.chip{display:inline-flex;align-items:center;gap:6px;font:600 13px Inter,sans-serif;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.chip.ap{background:var(--cob);color:var(--oncob)}
+.chip.st{border:1.5px solid var(--cob);color:var(--cob);padding:3px 9px}
+.chip.mx{border:1.5px dashed var(--cob);color:var(--cob);padding:3px 9px}
+.fine{font-size:14px;color:var(--mute);max-width:60ch;margin:16px 0 0}
+/* hero sheets */
+.sheets{position:relative;min-height:400px}
+.sheet{position:absolute;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;box-shadow:0 1px 2px rgba(10,13,24,.06),0 12px 28px -12px rgba(10,13,24,.25);font-size:14px}
+.sheet.back{top:0;right:0;width:84%;transform:rotate(2.5deg)}
+.sheet.front{bottom:0;left:0;width:90%;transform:rotate(-1.5deg)}
+.sheet .k{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:10px;color:var(--mute);font-size:13px}
+.sheet h4{font:600 16px/1.3 "Space Grotesk",sans-serif;margin:0 0 12px}
+.sheet table{width:100%;border-collapse:collapse;font-size:13px}
+.sheet td{border-top:1px solid var(--line);padding:7px 6px;vertical-align:top}
+.sheet td:first-child{color:var(--cob);font-weight:600;width:24px}
+.bar{height:8px;border-radius:4px;background:var(--pale);margin:7px 0}
+.sev{font-weight:600;color:var(--cob)}
+/* sections */
+.band{padding:clamp(40px,5vw,72px) 0}
+.band h2{font-size:clamp(28px,3.4vw,38px);margin:0 0 8px}
+.lede{color:var(--mute);margin:0 0 28px;max-width:66ch}
+.start{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.start a{display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:14px;background:var(--pale);color:var(--ink);text-decoration:none;border:1px solid transparent;transition:border-color .15s}
+.start a:hover{border-color:var(--cob)}
+.start b{font:600 20px/1.2 "Space Grotesk",sans-serif}
+.start span{color:var(--mute);font-size:15px}
+.start em{font-style:normal;color:var(--cob);font-weight:600;margin-top:auto}
+.libsec{margin-top:34px}
+.libsec h3{font-size:22px;margin:0 0 12px;display:flex;align-items:baseline;gap:10px}
+.libsec h3 small{font:500 14px Inter,sans-serif;color:var(--mute)}
+.lib{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lib a{display:flex;flex-direction:column;gap:10px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;color:var(--ink);text-decoration:none;background:var(--card);transition:border-color .15s,transform .15s}
+.lib a:hover{border-color:var(--cob);transform:translateY(-2px)}
+.lib b{font-weight:600;line-height:1.3}
+.lib span.d{font-size:14px;color:var(--mute)}
+.lib .chip{align-self:flex-start;margin-top:auto}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.box{border:1px solid var(--line);border-radius:14px;padding:22px 24px;background:var(--card)}
+.box h3{margin:0 0 10px;font-size:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.box ul{margin:0;padding-left:20px}
+.box li{margin:7px 0}
+.proj{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.proj a{display:block;padding:20px 22px;border:1px solid var(--line);border-radius:14px;color:var(--ink);text-decoration:none;background:var(--card)}
+.proj a:hover{border-color:var(--cob)}
+.proj b{font:600 19px "Space Grotesk",sans-serif}
+.proj p{margin:6px 0 12px;color:var(--mute)}
+footer{background:var(--pale);border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:24px;padding-top:44px;padding-bottom:44px}
+footer h2{font-size:30px;margin:0 0 10px}
+footer p{margin:4px 0}
+/* reader */
+.reader{display:grid;grid-template-columns:260px minmax(0,1fr);gap:clamp(24px,4vw,56px);padding-top:32px;padding-bottom:64px}
+.toc{position:sticky;top:88px;align-self:start;max-height:calc(100vh - 110px);overflow:auto;padding-right:6px}
+.toc p{font:600 13px Inter,sans-serif;color:var(--mute);margin:18px 0 6px}
+.toc p:first-child{margin-top:0}
+.toc a{display:block;padding:6px 10px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:15px;line-height:1.35}
+.toc a:hover{background:var(--pale)}
+.toc a[aria-current=page]{background:var(--cob);color:var(--oncob)}
+.tocm{display:none;margin-bottom:12px}
+.tocm summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;padding:0 14px}
+.crumb{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-size:14px;color:var(--mute);margin-bottom:14px}
+article{max-width:780px}
+article h1{font-size:clamp(30px,3.6vw,40px);margin:0 0 14px}
+article h2{font-size:26px;margin:40px 0 12px;padding-top:6px}
+article h3{font-size:20px;margin:28px 0 10px}
+article p,article li{max-width:70ch}
+article hr{border:0;border-top:1px solid var(--line);margin:32px 0}
+article blockquote{margin:18px 0;padding:14px 18px;border-left:4px solid var(--cob);background:var(--pale);border-radius:0 10px 10px 0}
+article blockquote p{margin:4px 0}
+article .lab{padding:12px 16px;border-radius:10px;background:var(--pale);font-size:15px}
+article .lab.ap{border-left:4px solid var(--cob)}
+article .lab.st{border-left:4px dashed var(--cob)}
+article code{font:14px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--code);padding:2px 5px;border-radius:5px;overflow-wrap:anywhere}
+article pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow-x:auto}
+article pre code{background:none;padding:0;overflow-wrap:normal}
+.tbl{overflow-x:auto;margin:16px 0;border:1px solid var(--line);border-radius:10px}
+article table{border-collapse:collapse;width:100%;font-size:15px}
+article th{background:var(--pale);text-align:left;font-weight:600}
+article th,article td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+article tr:last-child td{border-bottom:0}
+.mermaid svg{max-width:min(100%,640px)!important;height:auto}
+.mermaid{margin:18px 0;padding:16px;border:1px solid var(--line);border-radius:10px;overflow-x:auto;text-align:center;background:var(--card)}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:48px;max-width:780px}
+.pager a{display:block;padding:14px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink)}
+.pager a:hover{border-color:var(--cob)}
+.pager small{display:block;color:var(--mute)}
+.pager .nx{text-align:right;grid-column:2}
+.msg{padding:18px;border:1px dashed var(--line);border-radius:12px;color:var(--mute)}
+@media(max-width:960px){.lib,.start{grid-template-columns:repeat(2,minmax(0,1fr))}.reader{grid-template-columns:minmax(0,1fr)}.toc{display:none}.tocm{display:block}}
+@media(max-width:760px){.hero .wrap,.two,.proj,footer .wrap{grid-template-columns:minmax(0,1fr)}.sheets{min-height:360px}.nav{display:none}}
+@media(max-width:560px){.lib,.start{grid-template-columns:minmax(0,1fr)}.sheet.back{width:92%}.sheet.front{width:96%}.sheets{min-height:390px}article table{font-size:14px}.pager{grid-template-columns:minmax(0,1fr)}.pager .nx{grid-column:1}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#home"><b>Marcus Gatti</b><small><span class="en">QA portfolio</span><span class="pt">Portfólio de QA</span></small></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#home" data-nav="home"><span class="en">Home</span><span class="pt">Início</span></a>
+    <a href="#home-library" data-nav="lib"><span class="en">Library</span><span class="pt">Biblioteca</span></a>
+    <a href="#case-study" data-nav="case-study"><span class="en">Case study</span><span class="pt">Estudo de caso</span></a>
+    <a href="https://github.com/M-Gatti/qa-portfolio">GitHub</a>
+  </nav>
+  <div class="seg" role="group" aria-label="Language / Idioma"><i aria-hidden="true"></i>
+    <button id="b-en" type="button" data-set="en" aria-pressed="true">EN</button>
+    <button id="b-pt" type="button" data-set="pt" aria-pressed="false">PT</button>
+  </div>
+</div></header>
+
+<div id="stage">
+<main id="home-view">
+<section class="hero"><div class="wrap">
+  <div>
+    <h1>Marcus Gatti</h1>
+    <p class="role"><span class="en">QA Engineer · web and mobile</span><span class="pt">QA Engineer · web e mobile</span></p>
+    <p class="intro en">About 2.5 years testing web, Android and iOS apps in Agile teams, working remotely from Belo Horizonte, Brazil. This is the documentation I work with: templates, test design techniques, QA flows and a case study, organized along the ISTQB CTFL v4.0 syllabus.</p>
+    <p class="intro pt">Cerca de 2,5 anos testando apps web, Android e iOS em times ágeis, remoto de Belo Horizonte (MG). Esta é a documentação com que trabalho: templates, técnicas de design de teste, fluxos de QA e um estudo de caso, organizados pelo syllabus ISTQB CTFL v4.0.</p>
+    <div class="btns">
+      <a class="btn pri" href="#case-study"><span class="en">Read the case study</span><span class="pt">Ler o estudo de caso</span></a>
+      <a class="btn sec" href="#home-library"><span class="en">Browse the library</span><span class="pt">Ver a biblioteca</span></a>
+    </div>
+    <div class="legend"><span class="en">Every document says how I know it:</span><span class="pt">Cada documento diz de onde vem:</span>
+      <span class="chip ap"><span class="en">Applied in practice</span><span class="pt">Aplicado na prática</span></span>
+      <span class="chip st"><span class="en">Study reference</span><span class="pt">Referência de estudo</span></span>
+    </div>
+    <p class="fine en">All examples are fictional (<em>TrilhaFit</em>, an invented gym class booking app). I am preparing for the CTFL v4.0 exam, planned for 2027.</p>
+    <p class="fine pt">Todos os exemplos são fictícios (<em>TrilhaFit</em>, um app inventado de reserva de aulas de academia). Estou me preparando para a prova da CTFL v4.0, prevista para 2027.</p>
+  </div>
+  <div class="sheets" aria-hidden="true">
+    <div class="sheet back">
+      <div class="k"><span>BUG-129</span><span class="sev"><span class="en">Severity: High</span><span class="pt">Severidade: Alta</span></span></div>
+      <h4 class="en">[Waitlist] Promoted member gets no notification when class starts in under 2 h</h4>
+      <h4 class="pt">[Lista de espera] Aluna promovida não recebe notificação quando a aula começa em menos de 2 h</h4>
+      <div class="bar" style="width:92%"></div><div class="bar" style="width:76%"></div><div class="bar" style="width:84%"></div>
+    </div>
+    <div class="sheet front">
+      <div class="k"><span>TC-0107 · BK-104</span><span class="chip ap"><span class="en">Applied in practice</span><span class="pt">Aplicado na prática</span></span></div>
+      <h4 class="en">[Booking] Book a class with one spot left: booking confirmed, class becomes full</h4>
+      <h4 class="pt">[Reserva] Reservar aula com 1 vaga restante: reserva confirmada e aula lotada</h4>
+      <table>
+        <tr><td>1</td><td class="en">Open the class: shows "1 spot left"</td><td class="pt">Abrir a aula: mostra "1 vaga restante"</td></tr>
+        <tr><td>2</td><td class="en">Tap Book: "You're booked!"</td><td class="pt">Tocar em Reservar: "Reserva feita!"</td></tr>
+        <tr><td>3</td><td class="en">Another member sees "Full" and Join waitlist</td><td class="pt">Outro aluno vê "Lotada" e Entrar na lista de espera</td></tr>
+      </table>
+    </div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2><span class="en">Start here</span><span class="pt">Comece por aqui</span></h2>
+  <p class="lede"><span class="en">Three documents that show how I work.</span><span class="pt">Três documentos que mostram como eu trabalho.</span></p>
+  <div class="start">
+    <a href="#case-study"><b class="en">Case study</b><b class="pt">Estudo de caso</b><span class="en">From one test plan per sprint to a test repository by journey, with an AI-assisted workflow under human approval.</span><span class="pt">De um plano de teste por sprint para um repositório por jornada, com um fluxo assistido por IA sob aprovação humana.</span><em class="en">Read</em><em class="pt">Ler</em></a>
+    <a href="#techniques"><b class="en">Test design techniques</b><b class="pt">Técnicas de design de teste</b><span class="en">Six techniques from the CTFL v4.0 syllabus, each solved on the same example.</span><span class="pt">Seis técnicas do syllabus CTFL v4.0, cada uma resolvida no mesmo exemplo.</span><em class="en">Read</em><em class="pt">Ler</em></a>
+    <a href="#fail-vs-blocked"><b class="en">Fail vs Blocked</b><b class="pt">Fail × Blocked</b><span class="en">The decision that keeps a board honest: was it wrong, or could it not be tested?</span><span class="pt">A decisão que mantém o board honesto: estava errado, ou não deu para testar?</span><em class="en">Read</em><em class="pt">Ler</em></a>
+  </div>
+
+  <div id="home-library"></div>
+  <div id="lib"></div>
+</div></section>
+
+<section class="band" style="background:var(--pale)"><div class="wrap">
+  <h2><span class="en">Practice and study, kept apart</span><span class="pt">Prática e estudo, sem misturar</span></h2>
+  <p class="lede"><span class="en">What I do at work today, and what I am learning next.</span><span class="pt">O que faço no trabalho hoje, e o que estou aprendendo.</span></p>
+  <div class="two">
+    <div class="box"><h3><span class="en">In practice</span><span class="pt">Na prática</span><span class="chip ap"><span class="en">Applied</span><span class="pt">Aplicado</span></span></h3>
+      <ul class="en"><li>Functional, exploratory, regression, smoke and sanity testing on web, Android and iOS</li><li>Test design: equivalence partitioning, boundary values, decision tables</li><li>API testing with Postman; BDD and Gherkin</li><li>Azure DevOps (Boards, Test Plans, Wiki) and Jira; a test repository organized by user journey</li><li>Release coordination with the team, UAT, screen checks against Figma and Zeplin</li><li>AI in the QA workflow: test case drafts from test recordings, with checks, dry-run and human approval</li><li>Basic SQL and Python, Git and GitHub, DevTools</li></ul>
+      <ul class="pt"><li>Teste funcional, exploratório, regressão, smoke e sanity em web, Android e iOS</li><li>Design de teste: partição de equivalência, valor limite, tabela de decisão</li><li>Teste de API com Postman; BDD e Gherkin</li><li>Azure DevOps (Boards, Test Plans, Wiki) e Jira; repositório de casos organizado por jornada</li><li>Coordenação de release com o time, UAT, validação de telas no Figma e no Zeplin</li><li>IA no fluxo de QA: rascunhos de casos a partir das gravações dos testes, com checagens, dry-run e aprovação humana</li><li>SQL e Python básicos, Git e GitHub, DevTools</li></ul>
+    </div>
+    <div class="box"><h3><span class="en">Studying</span><span class="pt">Estudando</span><span class="chip st"><span class="en">Study</span><span class="pt">Estudo</span></span></h3>
+      <ul class="en"><li><b>Playwright</b>: main focus for test automation</li><li><b>ISTQB CTFL v4.0</b>: exam planned for 2027, then CTFL-AI</li><li><b>Cypress</b>: secondary study (Desafio-dti project)</li><li><b>Jest and Testing Library</b></li><li><b>LGPD</b> applied to test data and privacy testing</li></ul>
+      <ul class="pt"><li><b>Playwright</b>: foco principal em automação de testes</li><li><b>ISTQB CTFL v4.0</b>: prova prevista para 2027, depois a CTFL-AI</li><li><b>Cypress</b>: estudo secundário (projeto Desafio-dti)</li><li><b>Jest e Testing Library</b></li><li><b>LGPD</b> aplicada à massa de teste e a testes de privacidade</li></ul>
+    </div>
+  </div>
+</div></section>
+
+<section class="band"><div class="wrap">
+  <h2><span class="en">Projects</span><span class="pt">Projetos</span></h2>
+  <p class="lede"><span class="en">Public repositories of mine. Hands-on testing of a demo app is next.</span><span class="pt">Repositórios públicos meus. O próximo é um teste prático num app de demonstração.</span></p>
+  <div class="proj">
+    <a href="https://github.com/M-Gatti/Desafio-dti"><b>Desafio-dti</b><p class="en">Authentication and sign-up flows automated with Cypress and BDD.</p><p class="pt">Fluxos de autenticação e cadastro automatizados com Cypress e BDD.</p><span class="chip st"><span class="en">Study reference</span><span class="pt">Referência de estudo</span></span></a>
+    <a href="https://github.com/M-Gatti/teleprompter"><b>teleprompter</b><p class="en">A small PWA I built for my own use, published on GitHub Pages.</p><p class="pt">Um PWA pequeno que fiz para uso próprio, publicado no GitHub Pages.</p><span class="chip st" style="border-style:dotted"><span class="en">Personal project</span><span class="pt">Projeto pessoal</span></span></a>
+  </div>
+</div></section>
+</main>
+
+<main id="doc-view" hidden>
+  <div class="wrap reader">
+    <nav class="toc" id="toc" aria-label="Documents"></nav>
+    <div>
+      <details class="tocm"><summary><span class="en">All documents</span><span class="pt">Todos os documentos</span></summary><div id="tocm"></div></details>
+      <div class="crumb"><span id="crumb"></span><a id="gh" href="#"><span class="en">View on GitHub</span><span class="pt">Ver no GitHub</span></a></div>
+      <article id="doc"></article>
+      <div class="pager" id="pager"></div>
+    </div>
+  </div>
+</main>
+</div>
+
+<footer id="contact"><div class="wrap">
+  <div>
+    <h2><span class="en">Let's talk</span><span class="pt">Vamos conversar</span></h2>
+    <p><span class="en">Open to remote QA work: contract (PJ), part-time or freelance.</span><span class="pt">Aberto a trabalho remoto de QA: PJ, meio período ou freelance.</span></p>
+    <p><a href="https://linkedin.com/in/gattisj">linkedin.com/in/gattisj</a> · <a href="https://github.com/M-Gatti">github.com/M-Gatti</a></p>
+    <p>gattimarcussj@gmail.com</p>
+  </div>
+  <div>
+    <p><b><span class="en">Languages</span><span class="pt">Idiomas</span></b></p>
+    <p class="en">Portuguese (native) · English (advanced) · Spanish (intermediate)</p>
+    <p class="pt">Português (nativo) · inglês (avançado) · espanhol (intermediário)</p>
+    <p class="fine"><span class="en">No forms, cookies or analytics on this site. Content under CC BY 4.0.</span><span class="pt">Este site não tem formulário, cookie nem analytics. Conteúdo sob CC BY 4.0.</span></p>
+  </div>
+</div></footer>
+
+<noscript><p class="wrap">This site needs JavaScript to show the documents. They are all on <a href="https://github.com/M-Gatti/qa-portfolio">GitHub</a>.</p></noscript>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+<script>
+{
+const GH='https://github.com/M-Gatti/qa-portfolio/blob/main/';
+const SEC={tpl:{en:'Templates',pt:'Templates'},tec:{en:'Test design techniques',pt:'Técnicas de design de teste'},flw:{en:'QA flows',pt:'Fluxos de QA'},cs:{en:'Case study',pt:'Estudo de caso'}};
+const LAB={ap:{en:'Applied in practice',pt:'Aplicado na prática'},st:{en:'Study reference',pt:'Referência de estudo'},mx:{en:'Practice + study',pt:'Prática + estudo'}};
+const D=(id,s,l,en,pt,te,tp,de,dp)=>({id,s,l,en,pt,t:{en:te,pt:tp},d:{en:de,pt:dp}});
+const DOCS=[
+ D('case-study','cs','ap','case-study/en/test-repository-and-ai-workflow.md','case-study/pt-br/repositorio-de-casos-e-fluxo-com-ia.md','Test repository by journey, with an AI-assisted workflow','Repositório de casos por jornada, com fluxo assistido por IA','Fictional scenario, real techniques and decisions','Cenário fictício, técnicas e decisões reais'),
+ D('techniques','tec','mx','techniques/en/test-design-techniques.md','techniques/pt-br/tecnicas-de-design-de-teste.md','Six techniques, one example','Seis técnicas, um exemplo','Partitions, boundaries, decision tables, state transition, error guessing, exploratory','Partição, valor limite, tabela de decisão, transição de estado, suposição de erro, exploratório'),
+ D('qa-flow','flw','ap','flows/en/qa-flow-user-story.md','flows/pt-br/fluxo-de-qa-da-historia.md','QA flow for a user story','Fluxo de QA de uma história','From refinement to Done','Do refinamento ao Done'),
+ D('fail-vs-blocked','flw','ap','flows/en/fail-vs-blocked.md','flows/pt-br/fail-vs-blocked.md','Fail vs Blocked','Fail × Blocked','Decision criteria with examples','Critérios de decisão com exemplos'),
+ D('bug-triage','flw','mx','flows/en/bug-triage.md','flows/pt-br/triagem-de-bug.md','Bug triage','Triagem de bug','QA side in practice; meeting format from study','Parte do QA na prática; reunião vinda do estudo'),
+ D('test-case','tpl','ap','templates/en/test-case.md','templates/pt-br/caso-de-teste.md','Test case','Caso de teste','Fields, writing rules, solved example','Campos, regras de escrita, exemplo resolvido'),
+ D('bug-report','tpl','ap','templates/en/bug-report.md','templates/pt-br/bug-report.md','Bug report','Bug report','Severity vs priority, full example','Severidade × prioridade, exemplo completo'),
+ D('story-questions','tpl','ap','templates/en/story-clarification-report.md','templates/pt-br/relatorio-de-duvidas.md','Story clarification report','Relatório de dúvidas de PBI','Questions on a story, grouped by rule','Dúvidas sobre a história, por regra'),
+ D('user-story','tpl','mx','templates/en/user-story.md','templates/pt-br/historia-de-usuario.md','User story (PBI)','História de usuário (PBI)','Format plus the QA review checklist','Formato e checklist de revisão do QA'),
+ D('task','tpl','ap','templates/en/task.md','templates/pt-br/task.md','QA task','Task de QA','Making QA work visible on the board','Trabalho de QA visível no board'),
+ D('release-checklist','tpl','ap','templates/en/release-checklist.md','templates/pt-br/checklist-de-release.md','Release checklist','Checklist de release','Before, go/no-go and after','Antes, go/no-go e depois'),
+ D('spec','tpl','ap','templates/en/spec-acceptance-criteria.md','templates/pt-br/spec-com-criterios-de-aceite.md','Spec with acceptance criteria','Spec com critérios de aceite','Used in my own projects','Usado nos meus projetos próprios'),
+ D('test-plan','tpl','st','templates/en/test-plan.md','templates/pt-br/plano-de-teste.md','Test plan','Plano de teste','CTFL 5.1.1 and ISO/IEC/IEEE 29119-3','CTFL 5.1.1 e ISO/IEC/IEEE 29119-3'),
+ D('risk-matrix','tpl','st','templates/en/risk-matrix.md','templates/pt-br/matriz-de-risco.md','Risk matrix','Matriz de risco','Likelihood × impact driving test depth','Probabilidade × impacto definindo a profundidade'),
+ D('exploratory-charter','tpl','st','templates/en/exploratory-charter.md','templates/pt-br/charter-exploratorio.md','Exploratory test charter','Charter exploratório','Charter, timebox, debrief','Charter, tempo, debriefing'),
+ D('traceability','tpl','st','templates/en/traceability-matrix.md','templates/pt-br/matriz-de-rastreabilidade.md','Traceability matrix','Matriz de rastreabilidade','Requirement, cases, results, defects','Requisito, casos, resultados, defeitos'),
+ D('summary-report','tpl','st','templates/en/test-summary-report.md','templates/pt-br/relatorio-de-resumo-de-teste.md','Test summary report','Relatório de resumo de teste','Recommendation first, evidence after','Recomendação primeiro, evidência depois'),
+ D('improvement','tpl','st','templates/en/improvement.md','templates/pt-br/melhoria.md','Improvement','Melhoria','When it is not a bug but hurts the user','Quando não é bug, mas atrapalha'),
+ D('privacy','tpl','st','templates/en/test-data-privacy-checklist.md','templates/pt-br/massa-de-teste-e-privacidade.md','Test data and privacy (LGPD)','Massa de teste e privacidade (LGPD)','Handling data while testing, and what to test','Como tratar dados ao testar, e o que testar')
+];
+const ORDER=['cs','tec','flw','tpl'];
+const TECH=[['ap','Equivalence partitioning','Partição de equivalência','4.2.1','1-equivalence-partitioning','1-partição-de-equivalência'],['ap','Boundary value analysis','Análise de valor limite','4.2.2','2-boundary-value-analysis','2-análise-de-valor-limite'],['ap','Decision table testing','Tabela de decisão','4.2.3','3-decision-table-testing','3-tabela-de-decisão'],['st','State transition testing','Transição de estado','4.2.4','4-state-transition-testing','4-transição-de-estado'],['st','Error guessing','Suposição de erro','4.4.1','5-error-guessing','5-suposição-de-erro-error-guessing'],['ap','Exploratory testing','Teste exploratório','4.4.2','6-exploratory-testing','6-teste-exploratório']];
+const byPath={};DOCS.forEach(d=>{byPath[d.en]={d,lang:'en'};byPath[d.pt]={d,lang:'pt'}});
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const chip=(l,lang)=>`<span class="chip ${l}">${LAB[l][lang]}</span>`;
+let lang='en',cur=null,pendingAnchor=null;
+const cache={};
+const slug=s=>s.trim().toLowerCase().replace(/[^\p{L}\p{N}\- _]/gu,'').replace(/ /g,'-');
+const dark=()=>{const t=document.documentElement.dataset.theme;return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches};
+try{const dk=dark();window.mermaid&&mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',flowchart:{curve:'basis',nodeSpacing:28,rankSpacing:34},themeVariables:{fontFamily:'Inter, sans-serif',fontSize:'14px',primaryColor:dk?'#111733':'#eef2ff',primaryBorderColor:dk?'#7b95ff':'#1240e0',primaryTextColor:dk?'#e8ebf5':'#0d0f14',lineColor:dk?'#9aa3bd':'#596075',secondaryColor:dk?'#0f1428':'#ffffff',tertiaryColor:dk?'#0f1428':'#ffffff',edgeLabelBackground:dk?'#0a0d18':'#ffffff',background:dk?'#0f1428':'#ffffff'}})}catch(e){}
+
+const renderLib=()=>{
+  $('lib').innerHTML=ORDER.filter(s=>s!=='cs').map(s=>{const ds=DOCS.filter(d=>d.s===s);
+    if(s==='tec')return `<div class="libsec"><h3>${SEC[s][lang]}<small>CTFL v4.0 · ${TECH.length}</small></h3><div class="lib">${TECH.map(t=>`<a href="#techniques" data-anchor="${lang==='pt'?t[5]:t[4]}"><b>${lang==='pt'?t[2]:t[1]}</b><span class="d">CTFL ${t[3]}</span>${chip(t[0],lang)}</a>`).join('')}</div></div>`;
+    return `<div class="libsec"><h3>${SEC[s][lang]}<small>${ds.length}</small></h3><div class="lib">${ds.map(d=>`<a href="#${d.id}"><b>${esc(d.t[lang])}</b><span class="d">${esc(d.d[lang])}</span>${chip(d.l,lang)}</a>`).join('')}</div></div>`}).join('');
+  const toc=ORDER.map(s=>`<p>${SEC[s][lang]}</p>`+DOCS.filter(d=>d.s===s).map(d=>`<a href="#${d.id}"${cur&&cur.id===d.id?' aria-current="page"':''}>${esc(d.t[lang])}</a>`).join('')).join('');
+  $('toc').innerHTML=toc;$('tocm').innerHTML=toc;
+};
+
+const linkFix=(root,base)=>{
+  root.querySelectorAll('a[href]').forEach(a=>{
+    const h=a.getAttribute('href');
+    if(/^https?:/i.test(h)){a.target='_blank';a.rel='noopener';return}
+    if(h.startsWith('#')){const id=decodeURIComponent(h.slice(1));a.addEventListener('click',e=>{e.preventDefault();const t=document.getElementById('h-'+id);t&&t.scrollIntoView({behavior:'smooth'})});return}
+    const [p,anc]=h.split('#');
+    const full=new URL(p,'https://x/'+base).pathname.slice(1);
+    const hit=byPath[decodeURIComponent(full)];
+    if(hit){a.href='#'+hit.d.id;a.addEventListener('click',e=>{e.preventDefault();pendingAnchor=anc?decodeURIComponent(anc):null;if(hit.lang!==lang)setLang(hit.lang,true);go(hit.d.id)})}
+    else{a.href=GH+full;a.target='_blank';a.rel='noopener'}
+  });
+};
+
+const showDoc=async d=>{
+  const path=d[lang];
+  $('crumb').textContent=SEC[d.s][lang];
+  $('gh').href=GH+path;
+  const art=$('doc');
+  try{
+    if(!cache[path]){const r=await fetch(path);if(!r.ok)throw new Error(r.status);cache[path]=await r.text()}
+    let html=window.marked?marked.parse(cache[path],{gfm:true}):'<pre>'+esc(cache[path])+'</pre>';
+    if(window.DOMPurify)html=DOMPurify.sanitize(html);
+    art.innerHTML=html;
+  }catch(e){art.innerHTML=`<div class="msg">${lang==='pt'?'Não consegui carregar este documento aqui.':'Could not load this document here.'} <a href="${GH+path}">${lang==='pt'?'Abrir no GitHub':'Open on GitHub'}</a></div>`;return}
+  art.querySelectorAll('h1,h2,h3,h4').forEach(h=>h.id='h-'+slug(h.textContent));
+  art.querySelectorAll('table').forEach(t=>{const w=document.createElement('div');w.className='tbl';t.parentNode.insertBefore(w,t);w.appendChild(t)});
+  art.querySelectorAll('p').forEach(p=>{const t=p.textContent.trim();if(t.startsWith('✅'))p.classList.add('lab','ap');else if(t.startsWith('📚'))p.classList.add('lab','st')});
+  linkFix(art,path);
+  const ms=[...art.querySelectorAll('pre code.language-mermaid')].map(c=>{const div=document.createElement('div');div.className='mermaid';div.textContent=c.textContent;c.parentNode.replaceWith(div);return div});
+  if(ms.length&&window.mermaid){try{await mermaid.run({nodes:ms})}catch(e){}}
+  const i=DOCS.indexOf(d),pv=DOCS[i-1],nx=DOCS[i+1];
+  $('pager').innerHTML=(pv?`<a href="#${pv.id}"><small>${lang==='pt'?'Anterior':'Previous'}</small>${esc(pv.t[lang])}</a>`:'')+(nx?`<a class="nx" href="#${nx.id}"><small>${lang==='pt'?'Próximo':'Next'}</small>${esc(nx.t[lang])}</a>`:'');
+  if(pendingAnchor){const t=$('h-'+pendingAnchor);pendingAnchor=null;t&&t.scrollIntoView()}
+};
+
+document.addEventListener('click',e=>{const a=e.target.closest('a[data-anchor]');if(a){pendingAnchor=a.dataset.anchor}});
+const go=id=>{if(location.hash!=='#'+id)location.hash=id;else route()};
+const route=async()=>{
+  const h=decodeURIComponent(location.hash.slice(1));
+  const d=DOCS.find(x=>x.id===h);
+  document.querySelectorAll('.nav a[data-nav]').forEach(a=>a.removeAttribute('aria-current'));
+  if(d){cur=d;$('home-view').hidden=true;$('doc-view').hidden=false;renderLib();const hadA=!!pendingAnchor;if(!hadA)window.scrollTo(0,0);await showDoc(d);
+    const n=document.querySelector(`.nav a[data-nav="${d.id}"]`);n&&n.setAttribute('aria-current','page');}
+  else{cur=null;$('doc-view').hidden=true;$('home-view').hidden=false;renderLib();
+    if(h==='home-library'){const t=$('home-library');t&&t.scrollIntoView()}else window.scrollTo(0,0);
+    const n=document.querySelector('.nav a[data-nav="home"]');n&&n.setAttribute('aria-current','page');}
+};
+
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const setLang=(l,quiet)=>{
+  if(l===lang&&!quiet)return;
+  const apply=async()=>{
+    lang=l;const r=document.documentElement;r.dataset.lang=l;r.lang=l==='pt'?'pt-BR':'en';
+    $('b-en').setAttribute('aria-pressed',l==='en');$('b-pt').setAttribute('aria-pressed',l==='pt');
+    try{localStorage.setItem('qa-lang',l)}catch(e){}
+    renderLib();if(cur&&!quiet)await showDoc(cur);
+  };
+  if(quiet||reduce){apply();return}
+  const els=document.querySelectorAll('#stage,footer,.nav,.brand small');els.forEach(e=>e.classList.add('swap'));
+  setTimeout(async()=>{await apply();requestAnimationFrame(()=>els.forEach(e=>e.classList.remove('swap')))},200);
+};
+
+let start='en';
+try{start=localStorage.getItem('qa-lang')||''}catch(e){}
+if(!start)start=(navigator.language||'').toLowerCase().startsWith('pt')?'pt':'en';
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.set)));
+setLang(start,true);
+addEventListener('hashchange',route);
+route();
+}
+</script>
+</body>
+</html>
