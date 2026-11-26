@@ -1,0 +1,13 @@
+# Termos que nunca podem aparecer no portfólio público (spec 0003 do gatti-harness).
+# Um termo por linha; linhas com # e em branco são ignoradas.
+# A checagem é por palavra inteira e sem diferenciar maiúscula/minúscula.
+PUCPR
+PUCAPP
+Magister
+APC
+qa-processes-portfolio
+biladeiro
+Intern
+Estagiário
+certified
+certificado
