@@ -1,0 +1,27 @@
+name: Termos proibidos
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  checar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Procurar termos proibidos
+        run: |
+          grep -v '^#' .termos-proibidos.txt | sed '/^[[:space:]]*$/d' > "$RUNNER_TEMP/termos"
+          echo "Termos checados: $(wc -l < "$RUNNER_TEMP/termos")"
+          achados=$(grep -rIniwF -f "$RUNNER_TEMP/termos" --exclude-dir=.git --exclude=.termos-proibidos.txt . || true)
+          if [ -n "$achados" ]; then
+            while IFS=: read -r arquivo linha resto; do
+              echo "::error file=${arquivo#./},line=${linha}::Termo proibido encontrado: ${resto}"
+            done <<< "$achados"
+            exit 1
+          fi
+          echo "Nenhum termo proibido."
